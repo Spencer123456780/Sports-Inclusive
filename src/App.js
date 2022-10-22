@@ -15,6 +15,9 @@ class App extends Component {
           <Routes>
              <Route  index element={<Home />} exact/>
              <Route path="/AccountCreation" element={<AccountCreation />}/>
+             <Route path="/AccountCreation" element={<AccountCreation />}/>
+             <Route path="/AccountCreation" element={<AccountCreation />}/>
+             <Route path="/AccountCreation" element={<AccountCreation />}/>
 
             
           <Route component={Error}/>

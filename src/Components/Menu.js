@@ -9,11 +9,10 @@ const Menu = () => {
             {/* equivalent to < a href > ..</a> tag */}
             <Link to="/" className='myroute'>Home</Link>  
             <Link to="/AccountCreation" className='myroute'>Account Creation</Link>
-            <Link to="/ " className='myroute'>Login</Link>
-            <Link to="/ " className='myroute'>Sport 1</Link>
-            <Link to="/ " className='myroute'>Sport 2</Link>
-            <Link to="/ " className='myroute'>Sport 3</Link>
-            <Link to="/ " className='myroute'>Sport 4</Link>
+            <Link to="/" className='myroute'>Login</Link>
+            <Link to="/NBA" className='myroute'>NBA</Link>
+            <Link to="/NHL" className='myroute'>NHL</Link>
+            <Link to="/NFL" className='myroute'>NFL</Link>
             
         </div>
         {/* <Outlet /> */}
