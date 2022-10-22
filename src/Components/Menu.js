@@ -1,21 +1,32 @@
 import React from 'react';
-
 import { Link } from "react-router-dom";
  
 const Menu = () => {
     return (
         <> 
         <div className='menu'>
-            {/* equivalent to < a href > ..</a> tag */}
-            <Link to="/" className='myroute'>Home</Link>  
-            <Link to="/AccountCreation" className='myroute'>Account Creation</Link>
-            <Link to="/" className='myroute'>Login</Link>
-            <Link to="/NBA" className='myroute'>NBA</Link>
-            <Link to="/NHL" className='myroute'>NHL</Link>
-            <Link to="/NFL" className='myroute'>NFL</Link>
+            <div className='Top_Nav'>
+
+                <div className='League_Links'>
+                    <div><Link to="/NBA" className='League_Route'>NBA</Link></div>
+                    <div><Link to="/NHL" className='League_Route'>NHL</Link></div>
+                    <div><Link to="/NFL" className='League_Route'>NFL</Link></div>
+                </div>
+
+                <div><input id='Search_Bar' type='text' placeholder='  Search..'></input></div>
+
+                <div> Social | Account</div>
+
+            </div>
+            <div className='Bottom_Nav'>
+                <div><Link to="/" id='Home_Header'>Sports Inclusive</Link></div>
+                <div><button id='SignIn'>Sign In</button></div>
+
+            </div>
+           
             
         </div>
-        {/* <Outlet /> */}
+    
         </>
     );
 }
