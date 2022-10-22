@@ -1,4 +1,4 @@
-body 
+  body 
   {
     color: white;
     padding: 40px;
@@ -45,3 +45,45 @@ body
   text-align: left;
   margin-top: 10px; 
  }
+
+
+
+
+
+
+#Title{
+  text-align: left;
+  margin-left: 10%;
+}
+
+#NFLInfo
+{
+  text-align: left;
+}
+
+#TeamsPlayers
+{
+ border-style: solid;
+}
+
+#Inlayed
+{
+  display: grid;
+  grid-template-columns: 400px 500px;
+  justify-content:space-evenly;
+ }
+
+
+ #TeamsPlayers{
+  text-align: left;
+}
+
+
+#Spaceingz{
+  margin-left: 10%;
+}
+
+
+#HomePageRight{
+  border-style: solid;
+}

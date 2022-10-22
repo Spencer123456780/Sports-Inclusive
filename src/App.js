@@ -3,6 +3,7 @@ import { BrowserRouter,Routes ,Route } from 'react-router-dom';
  
 import Home from './Pages/Home';
 import AccountCreation from './Pages/AccountCreation';
+import NFL from './Pages/NFL';
 import Menu from './Components/Menu';
  
 class App extends Component {
@@ -17,7 +18,7 @@ class App extends Component {
              <Route path="/AccountCreation" element={<AccountCreation />}/>
              <Route path="/AccountCreation" element={<AccountCreation />}/>
              <Route path="/AccountCreation" element={<AccountCreation />}/>
-             <Route path="/AccountCreation" element={<AccountCreation />}/>
+             <Route path="/NFL" element={<NFL />}/>
 
             
           <Route component={Error}/>
