@@ -24,11 +24,14 @@ body
     text-decoration: none;
     padding: 10px;
     font-size: 25px;
+    height: 40px;
+    padding-top: 20px;
   }
   #Search_Bar{
     width: 400px;
     height: 30px;
     border-radius: 15px;
+    border: none;
   }
 
   .League_Links{
@@ -39,11 +42,18 @@ body
     color: white;
     text-decoration: none;
   }
+  .Account_Route{
+    text-decoration: none;
+    color: white;
+  }
+  
   .Bottom_Nav{
     display: grid;
     grid-template-columns: 700px 200px;
     justify-content: space-between;
     background-color: blue;
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
   #Home_Header{
     text-decoration: none;
@@ -51,15 +61,16 @@ body
     font-size: 60px;
     font-weight: 700;
   }
-  #SignIn{
+  .SignIn{
     background-color: #282c34;
+    text-decoration: none;
     color: white;
     border: none;
     font-size: 20px;
-    margin: 20px;
-    border-radius: 15px;
+    margin-top: 15px;
+    border-radius: 20px;
     width: 100px;
-    height: 35px;
+    height: 40px;
   }
 
  .NBA_Container{

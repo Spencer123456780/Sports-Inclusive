@@ -15,12 +15,14 @@ const Menu = () => {
 
                 <div><input id='Search_Bar' type='text' placeholder='  Search..'></input></div>
 
-                <div> Social | Account</div>
+                <div>
+                    <div><Link to='/AccountCreation' className='Account_Route' >Account</Link></div>
+                </div>
 
             </div>
             <div className='Bottom_Nav'>
                 <div><Link to="/" id='Home_Header'>Sports Inclusive</Link></div>
-                <div><button id='SignIn'>Sign In</button></div>
+                <div><button className='SignIn'><Link className='SignIn' to='/Signin'>Sign In</Link></button></div>
 
             </div>
            
