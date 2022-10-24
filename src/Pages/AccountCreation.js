@@ -18,7 +18,7 @@ function AccountCreation(){
     }
     return(
         <div className='AccountCreation'>
-            <div className='AccountForm'>      
+            <div className='AccountForm'>
                 <form onSubmit={handleSubmit}>
                     <div> <p> First Name: </p> <input className='AccountInput' type="text" onChange={(e)=>setName(e.target.value)}/> </div>
                     <div> <p> Last Name: </p> <input className='AccountInput' type="text" onChange={(e)=>setLastname(e.target.value)}/> </div>

@@ -8,6 +8,7 @@ import SignIn from './Pages/SignIn';
 import NHL from './Pages/NHL';
 import NHLplayers from './Pages/NHLplayers';
 import Menu from './Components/Menu';
+import AccountPage from './Pages/AccountPage';
  
 class App extends Component {
   render() {
@@ -25,10 +26,12 @@ class App extends Component {
              <Route path="/NHL" element={<NHL/>}/>
              <Route path="/SignIn" element={<SignIn />}/>
              <Route path="/NHLplayers" element={<NHLplayers/>}/>
+             <Route path="/AccountPage" element={<AccountPage/>}/>
+
             
           <Route component={Error}/>
           </Routes>
-      </BrowserRouter>
+       </BrowserRouter>
 
       </>   
     );

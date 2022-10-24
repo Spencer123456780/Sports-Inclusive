@@ -154,7 +154,6 @@ body
 
 
 
-
 .AccountCreation{
 border-style: solid;
 background-color: gray;
@@ -169,6 +168,39 @@ margin-right: 25%;
 .AccountInput{
   width: 50%;
 }
+
+
+#AccountTitle{
+  text-align: left;
+  margin-left: 2%;
+}
+#AccountPageSpacing{
+  display: grid;
+  grid-template-columns: 400px 800px;
+  justify-content:space-evenly;
+}
+
+#AccountImage{
+  border-style: solid;
+  border-radius: 50%;
+  background-color: lightblue;
+  margin-top: 10%;
+}
+#ImageName{
+  Color: blue;
+  margin-top: 48%;
+}
+
+#AccountInfomation{
+  text-align: left;
+}
+#AccountInfoInput{
+  width: 100%;
+}
+
+
+
+
 
 #NHL-Title{
   text-align: left;
