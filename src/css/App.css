@@ -159,7 +159,6 @@ body
 
 
 
-
 .AccountCreation{
 border-style: solid;
 background-color: gray;
@@ -174,3 +173,258 @@ margin-right: 25%;
 .AccountInput{
   width: 50%;
 }
+
+
+#AccountTitle{
+  text-align: left;
+  margin-left: 2%;
+}
+#AccountPageSpacing{
+  display: grid;
+  grid-template-columns: 400px 800px;
+  justify-content:space-evenly;
+}
+
+#AccountImage{
+  border-style: solid;
+  border-radius: 50%;
+  background-color: lightblue;
+  margin-top: 10%;
+}
+#ImageName{
+  Color: blue;
+  margin-top: 48%;
+}
+
+#AccountInfomation{
+  text-align: left;
+}
+#AccountInfoInput{
+  width: 100%;
+}
+
+
+
+
+
+#NHL-Title{
+  text-align: left;
+  margin-left: 3em;
+}
+
+#NHL-Title1{
+  text-align: left;
+  margin-top: -0.4em;
+
+}
+
+#NHL-Title2{
+  margin-bottom: -0.05em;
+}
+
+#NHL-Left{
+  width: 30em;
+  height: 32em;
+  padding: 0.5em;
+  margin-top: 3em;
+  margin-left: 2em;
+  text-align: left;
+  border: 3px solid gray;
+  float: left;
+}
+
+ #NHL-Left-News{
+   width: 22em;
+   height: 12em;
+   margin: auto;
+   background-color: gray;
+ }
+
+ #NHL-Left-Text{
+   width: 26em;
+   height: 15em;
+   margin: auto;
+   font-size: small;
+   color: lightgray;
+ }
+
+ #NHL-Bottom-Text{
+   margin-top: 9em;
+   text-align: center;
+   font-weight: bold;
+   text-decoration: underline;
+   font-size: 0.7em;
+ }
+
+
+ #NHL-Right{
+  width: 45em;
+  height: 32em;
+  padding: 0.5em;
+  margin-top: 3em;
+  margin-right: 2em;
+  border: 3px solid gray;
+  float: right;
+ }
+
+ #NHL-Right-Scoreboard{
+   width: 15em;
+   margin-top: 4em;
+   display: flex;
+   flex-direction: column;
+   flex-wrap: nowrap;
+   border: 1px solid white;
+ }
+
+ #NHL-Right-Game{
+    width: 10em;
+    margin-top: 0.5em;
+    margin-left: 2em;
+    float: left;
+ }
+
+ #NHL-Game-Score{
+   width: 100%;
+   height: 6em;
+   margin-top: -1.5em;
+   margin-left: 0.5em;
+   display: flex;
+   flex-direction: row;
+   flex-wrap: nowrap;
+ }
+
+ #NHL-Score-Text-Top{
+  margin-top: -0.5em;
+ font-size: 0.6em;
+}
+ #NHL-Score-Text{
+  margin-top: -2em;
+  font-size: 0.6em;
+ }
+
+
+#NHL-Right-Table{
+  float: right;
+  width:28em;
+  margin-top: -26em;
+}
+
+#NHL-Table-West{
+  text-align: left;
+  float: left;
+}
+
+#NHL-Table-East{
+  text-align: left;
+  float: right;
+}
+
+table{
+  border: 1px solid white;
+}
+
+td{
+  border: 1px solid white;
+  font-size: small;
+  text-align: center;
+  padding: 0.3em;
+}
+
+th{
+  border: 1px solid white;
+  font-weight: bold;
+  text-align: center;
+  padding: 0.3em;
+}
+
+#NHL-Player-Top{
+  width: 14em;
+  text-align: left;
+  margin-top: 2em;
+}
+
+#NHL-Amount{
+  margin-bottom: 2em;  
+  font-size: small;
+}
+#NHL-Title-Amount{
+  margin-top: -0.45em;
+}
+
+#NHL-Box{
+  width: 2em;
+  height: 3em;
+  text-align: center;
+  border: 1px solid gray;
+  padding: 0.5em;
+}
+
+#NHL-Box-Set{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+#NHL-Player-Mini{
+  font-size: 0.6em;
+  margin-bottom: -2.2em;
+}
+
+#NHL-Player-Mini1{
+  font-size: 0.6em;
+  margin-bottom: -0.05em;
+}
+
+#NHL-Player-Name{
+  margin-bottom: -0.5em;
+}
+
+#NHL-Bottom-News{
+  margin-top: 16em;
+}
+
+#NHL-Bottom-News1{
+  margin-left: -8em;
+}
+
+#NHL-Tag-Box{
+  margin-left: 4.5em;
+  margin-top: -5.5em;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+#NHL-Tag-Box1{
+  margin-left: 3em;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+#NHL-Tag{
+  font-size: 0.6em;
+  margin-left: 0.5em;
+}
+
+#NHL-Right-Top5{
+  width: 15em;
+  text-align: left;
+  float: right;
+  margin-right: 2em;
+}
+#NHL-Top-Players{
+  margin-bottom: -0.01em;
+}
+
+#NHL-Right-Topplay{
+  margin-left: 2em;
+  float: left;
+}
+
+#NHL-Inputs{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
