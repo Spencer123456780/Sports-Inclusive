@@ -22,7 +22,7 @@ const Menu = () => {
             </div>
             <div className='Bottom_Nav'>
                 <div><Link to="/" id='Home_Header'>Sports Inclusive</Link></div>
-                <div><button id='SignIn'>Sign In</button></div>
+                <div><button className='SignIn' id='SignIn'><Link className='SignIn' to='Signin'>Sign In</Link></button></div>
 
             </div>
            
