@@ -32,6 +32,10 @@ body
     height: 30px;
     border-radius: 15px;
     border: none;
+    margin-left: 10px;
+  }
+  .Search_Div{
+    display: flex;
   }
 
   .League_Links{
@@ -45,6 +49,7 @@ body
   .Account_Route{
     text-decoration: none;
     color: white;
+    margin-left: 10px;
   }
   
   .Bottom_Nav{
