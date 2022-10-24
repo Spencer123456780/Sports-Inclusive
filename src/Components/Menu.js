@@ -20,7 +20,7 @@ const Menu = () => {
             </div>
             <div className='Bottom_Nav'>
                 <div><Link to="/" id='Home_Header'>Sports Inclusive</Link></div>
-                <div><button id='SignIn'>Sign In</button></div>
+                <div><Link to ='/SignIn'><button id='SignIn'>Sign In</button></Link></div>
 
             </div>
            

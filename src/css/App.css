@@ -132,3 +132,29 @@ body
 #HomePageRight{
   border-style: solid;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+.AccountCreation{
+border-style: solid;
+background-color: gray;
+margin-top: 2%;
+margin-left: 25%;
+margin-right: 25%;
+}
+.AccountForm{
+  text-align: left;
+  margin-left: 30%;
+}
+.AccountInput{
+  width: 50%;
+}
