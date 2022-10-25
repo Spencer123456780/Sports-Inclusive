@@ -13,7 +13,7 @@ body
 .div-wrapper
   {
     background-color: #282c34;
-    height: 100vh;
+    height: 130vh;
 
   }
   .Top_Nav{
@@ -112,7 +112,7 @@ body
 
 
 
-#Title{
+#NFLTitle{
   text-align: left;
   margin-left: 10%;
 }
@@ -122,25 +122,26 @@ body
   text-align: left;
 }
 
-#TeamsPlayers
-{
- border-style: solid;
+#NFLVideoBox{
+  border-style: solid;
+  text-align: center;
 }
 
-#Inlayed
+#NFLTeamsPlayers
+{
+ border-style: solid;
+ text-align: left;
+}
+
+#NFLInlayed
 {
   display: grid;
   grid-template-columns: 400px 500px;
   justify-content:space-evenly;
- }
-
-
- #TeamsPlayers{
-  text-align: left;
 }
 
 
-#Spaceingz{
+#NFLSpaceingz{
   margin-left: 10%;
 }
 
@@ -181,7 +182,7 @@ margin-right: 25%;
 }
 #AccountPageSpacing{
   display: grid;
-  grid-template-columns: 400px 800px;
+  grid-template-columns: 400px 700px;
   justify-content:space-evenly;
 }
 
@@ -198,9 +199,16 @@ margin-right: 25%;
 
 #AccountInfomation{
   text-align: left;
+  border-style: solid;
+  margin-right: 35%;
 }
+
+#AccountPageForms{
+margin-left: 2%;
+}
+
 #AccountInfoInput{
-  width: 100%;
+  
 }
 
 
