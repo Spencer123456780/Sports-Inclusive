@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const NFL = () => {
     return (
-       <>
+       <div>
             <h1 id='NFLTitle'>NFL</h1>
             
             <div id='NFLInlayed'>
@@ -59,8 +59,7 @@ const NFL = () => {
                     </form>
                 </div>
             </div>
-
-       </>
+       </div>
     );
 }
  
