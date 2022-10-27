@@ -6,7 +6,7 @@ const home = () => {
           <h1 id='Title'>Top Stories</h1>
             <div id='Inlayed'>
                 <div>
-                    <h4  id = "NHL-Title">Weekly Sports Highlights</h4>
+                    <h4  id = "Home-Title">Weekly Sports Highlights</h4>
                     <div id = "NHL-Left-News">
 
                     </div>
@@ -14,9 +14,9 @@ const home = () => {
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet massa vitae tortor condimentum lacinia. Vitae elementum curabitur vitae nunc. Non tellus orci ac auctor augue. Eu consequat ac felis donec et odio pellentesque diam. Pharetra et ultrices neque ornare aenean.</p>
                     </div>
                     <div id = "NHL-Tag-Box">
-                        <p id = "NHL-Tag">#NBA</p>
-                        <p id = "NHL-Tag">#NHL</p>
-                        <p id = "NHL-Tag">#NFL</p>
+                        <p id = "HomeLeft-Tag">#NBA</p>
+                        <p id = "HomeLeft-Tag">#NHL</p>
+                        <p id = "HomeLeft-Tag">#NFL</p>
                     </div>
                     <h5 id = "NHL-Bottom-Text">See More NHL</h5>
                 </div>

@@ -2,6 +2,28 @@ import React from 'react';
 import { Link } from "react-router-dom";
 
 
+ /*     const axios = require("axios");
+
+        const options = {
+        method: 'GET',
+        url: 'https://nfl-schedule.p.rapidapi.com/v1/schedules',
+        headers: {
+            'X-RapidAPI-Key': 'aeb326b9b9msh46f18e56a6dbe09p14be33jsn23637b1e5523',
+            'X-RapidAPI-Host': 'nfl-schedule.p.rapidapi.com'
+        }
+        };
+
+        axios.request(options).then(function (response) {
+            console.log(response.data);
+        }).catch(function (error) {
+            console.error(error);
+        }); */
+
+
+
+
+
+
 
 const NFL = () => {
     return (
