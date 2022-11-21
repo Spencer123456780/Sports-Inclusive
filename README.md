@@ -1,5 +1,5 @@
-Installed in front end
-React
-Axois
-Http-Proxy-MiddleWare
+Installed in front end:
+React,
+Axois,
+Http-Proxy-MiddleWare,
 Font-Asome-Icons
