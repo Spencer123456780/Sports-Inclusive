@@ -1,6 +1,6 @@
 import express, { json } from 'express';
 const app = express();
-const port = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5000;
 import cors from 'cors';
 import fs from 'fs';
 import _ from 'underscore';
@@ -18,24 +18,23 @@ if(exists) {
   console.log("loading into the users data");
   var data = fs.readFileSync('dataset.json', 'utf8');
   obj = JSON.parse(data);
-}
-else {
-  console.log("Creating new data storage");
-  var obj = {user:[]}
+} else {
+  console.log("Creating new data storage")
+  var obj = {user:[]};
 }
 
 
-app.post('/newuser', (req, res) =>{
+app.post('/newuser', (req, res) => {
   console.log(req.body.Firstname)
-  const firstname = req.body.Firstname
-  const lastname = req.body.Lastname
-  const email = req.body.Email
-  const password = req.body.Password
-  const passwordCon = req.body.ConfirmPassword
-  const rs = {firstname, lastname, email, password, passwordCon}
+  const Firstname = req.body.Firstname
+  const Lastname = req.body.Lastname
+  const Email = req.body.Email
+  const Password = req.body.Password
+  const rs = {Firstname, Lastname, Email, Password}
+  
   console.log(JSON.stringify(rs))
   
-  if(!rs.email || !rs.firstname || !rs.lastname || !rs.password && rs.password != rs.passwordCon){
+  if(!rs.Email || !rs.Firstname || !rs.Lastname){
     let outcome = {
       info:"Please fill in all catogories or confirm that passwords are matching"
     }
@@ -43,13 +42,23 @@ app.post('/newuser', (req, res) =>{
   }
   else{
     obj.user.push({
-      firstname:req.body.Firstname,
-      lastname:req.body.Lastname,
-      email:req.body.Email,
-      password:req.body.Password
+      Firstname:req.body.Firstname,
+      Lastname:req.body.Lastname,
+      Email:req.body.Email,
+      Password:req.body.Password
     });
     let data = JSON.stringify(obj, null, 2);
     fs.writeFile('dataset.json', data, confirm);
-  }
+    function confirm(err)
+            {         
+            let outcome={
+                name:req.body.fname,
+                status:"success",
+                info:` :Data is recived thank you  ${firstname}`
+             }
+             res.send(outcome);
+             console.log(outcome);
+          }
+     }
 });
 
