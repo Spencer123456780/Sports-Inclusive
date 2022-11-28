@@ -14,10 +14,9 @@ const AccountPage = () => {
     const[ConfirmPassword, setConfermPassword]= useState("")
 
 
-    const handleSubmit = (e)=>
+    const handleSubmit = ()=>
     {
-        e.preventDefault();
-        alert(`user name is ${Firstname} ${Lastname} ${Email} ${Password} ${ConfirmPassword}` )
+        
     }
 
     return(
@@ -40,7 +39,7 @@ const AccountPage = () => {
                             <div> <p> Confirm Password: </p> <input className='AccountInfoInput' type="password" onChange={(e)=>setConfermPassword(e.target.value)}/> </div>
                             <br/> 
                             <br/> 
-                            <div><button type='submit' >Update</button></div> 
+                            <div><button onClick={handleSubmit}> Update </button></div> 
                             <br/>           
                         </form>
                     </div>

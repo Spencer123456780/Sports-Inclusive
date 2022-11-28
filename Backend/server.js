@@ -62,3 +62,49 @@ app.post('/newuser', (req, res) => {
      }
 });
 
+
+
+
+
+
+
+
+
+
+app.get('/search/:FirstName', (req, res) =>{
+
+  const file_location ='./dataset.json';
+  if(fs.existsSync(file_location)){
+    if(.isEmpty(obj)) {
+      res.send("There is no user with that information")
+    } else {
+      var data = fs.readFileSync('dataset.json', 'utf8');
+      obj = JSON.parse(data);
+      var matchingData ={};
+      var val = req.params.Email;
+      matchingData = []
+      for (var i = 0, l = obj.user.length; i < l; i++){
+        var myobj = obj.user[i].Email;
+        if(val === myobj){
+          let reply = {
+            email:req.params.email,
+            firstName:obj.user[i].Firstname,
+            lastName:obj.user[i].Lastname,
+            password:obj.user[i].Password,
+          }
+          matchingData.push(reply);
+          console.log(JSON.stringify(matchingData) + "This is the data found");
+        }
+        }
+        var rese={
+          success:true,
+          code:200,
+          profile:matchingdata
+        };                
+        res.send(matchingdata);
+      }
+  }else{
+    var rese={success:false,code:404, data:"No matching data found"};                
+    res.send(rese);
+  }
+})
