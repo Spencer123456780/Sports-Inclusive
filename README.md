@@ -1,6 +1,6 @@
 Installed in Frontend:
 React,
-Axois,
+Axios,
 Http-Proxy-MiddleWare,
 Font-Asome-Icons
 
