@@ -22,7 +22,7 @@ if(exists) {
 } else {
   console.log("Creating new data storage")
   var obj = {user:[]};
-}
+};
 
 
 app.post('/newuser', (req, res) => {
@@ -55,7 +55,7 @@ app.post('/newuser', (req, res) => {
             let outcome={
                 name:req.body.fname,
                 status:"success",
-                info:` :Data is recived thank you  ${firstname}`
+                info:` :Data is recived thank you  ${Firstname}`
              }
              res.send(outcome);
              console.log(outcome);
@@ -70,48 +70,70 @@ app.post('/newuser', (req, res) => {
 
 
 
-
 /*
-app.get('/search/:FirstName', (req, res) =>{
 
+app.get('/Signin:Email', (req, res) =>{
   const file_location ='./dataset.json';
-  if(fs.existsSync(file_location)){
-    if(.isEmpty(obj)) {
+  if(fs.existsSync(file_location))
+  {
+    if(_.isEmpty(obj)) 
+    {
       res.send("There is no user with that information")
-    } else {
+    } else 
+    {
       var data = fs.readFileSync('dataset.json', 'utf8');
       obj = JSON.parse(data);
       var matchingData ={};
       var val = req.params.Email;
+      //var val2 = req.params.Password;
       matchingData = []
-      for (var i = 0, l = obj.user.length; i < l; i++){
+      for (var i = 0, l = obj.user.length; i < l; i++)
+      {
         var myobj = obj.user[i].Email;
+        //var myobj2 = obj.user[i].Password;
         if(val === myobj){
           let reply = {
-            email:req.params.email,
-            firstName:obj.user[i].Firstname,
-            lastName:obj.user[i].Lastname,
-            password:obj.user[i].Password,
+            email:req.params.Email,
           }
           matchingData.push(reply);
-          console.log(JSON.stringify(matchingData) + "This is the data found");
+          console.log(JSON.stringify(matchingData) + "This is the data found"); 
         }
-        }
-        var rese={
-          success:true,
-          code:200,
-          profile:matchingdata
-        };                
-        res.send(matchingdata);
       }
+      //res.send(matchingdata);          
+      res.redirect("http://localhost:3000/AccountPage");
+    }
+  } else {              
+    res.send("No user found");
+  }
+}) */
+
+app.get('/signin/:Email', (req, res) =>{
+  const file_location = './dataset.json';
+  if (fs.existsSync(file_location)){
+    if(_.isEmpty(obj)){
+      res.send("There is no user information try again")
+    }else{
+      var data = fs.readFileSync('dataset.json', 'utf8');
+      obj = JSON.parse(data);
+      var matchingData = {};
+      var val = req.params.Email;
+      matchingData = [];
+      for(var i = 0, l = obj.user.length; i < l; i++){
+        var myObj = obj.user[i].Email;
+        if(val === myObj){
+          let reply = {
+            name: req.params.Email
+          }
+          matchingData.push(reply);
+          console.log(JSON.stringify(matchingData) + "is the matching data");
+        }
+      }
+      res.send(matchingData);
+    }
   }else{
-    var rese={success:false,code:404, data:"No matching data found"};                
-    res.send(rese);
+    res.send("No matching user");
   }
 })
-*/
-
-
 
 
 
@@ -160,33 +182,33 @@ axios.request(options).then(function (response) {
     console.error(error);
 });
 
+//NHL Teams Function
+function teamNHLStats() {
+  return teamsNHL.map(tnhl => {
+    return {
+      id: tnhl.competitorId,
+      teamName: tnhl.name,
+      teamPoints: tnhl.points,
+      teamOverall: tnhl.recordOverall,
+      teamConference: tnhl.conferenceName,
+      teamDivision: tnhl.divisionName,
+      teamPlacement: tnhl.place
+    }
+  })
+};
+
 
 //NHL Schedule function
 function nextNHLGame() {
   let hasHappened =  scheduleNHL.filter(game => game.status === 'Pre-Game').slice(0,3)
-  return hasHappened.map(h => {
+  return hasHappened.map(hnhl => {
     return{
-      gameDate: h.date,
-      gameHome: teamsNHL.find(t => t.id === h.homeCompetitorId).teamName,
-      gameAway: teamsNHL.find(t => t.id === h.awayCompetitorId).teamName
+      gameDate: hnhl.date,
+      gameHome: teamsNHL.find(tnhl => tnhl.id === hnhl.homeCompetitorId).teamName,
+      gameAway: teamsNHL.find(tnhl => tnhl.id === hnhl.awayCompetitorId).teamName
     }
   })
-}
-
-//NHL Teams Function
-function teamNHLStats() {
-  return teamsNHL.map(t => {
-    return {
-      id: t.competitorId,
-      teamName: t.name,
-      teamPoints: t.points,
-      teamOverall: t.recordOverall,
-      teamConference: t.conferenceName,
-      teamDivision: t.divisionName,
-      teamPlacement: t.place
-    }
-  })
-}
+};
 
 
 //============= NFL ====================
@@ -223,29 +245,29 @@ axios.request(options3).then(function (response) {
 
 //NFL Teams Function
 function teamNFLStats() {
-  return teamsNFL.map(t => {
+  return teamsNFL.map(tnfl => {
     return {
-      id: t.competitorId,
-      teamName: t.name,
-      teamOverall: t.recordOverall,
-      teamConference: t.conferenceName,
-      teamDivision: t.divisionName,
-      teamPlacement: t.place
+      id: tnfl.competitorId,
+      teamName: tnfl.name,
+      teamOverall: tnfl.recordOverall,
+      teamConference: tnfl.conferenceName,
+      teamDivision: tnfl.divisionName,
+      teamPlacement: tnfl.place
     }
   })
-}
+};
 
 //NFL Schedule function
 function nextNFLGame() {
   let hasHappened =  scheduleNFL.filter(game => game.status === 'Pre-Game').slice(0,3)
-  return hasHappened.map(h => {
+  return hasHappened.map(hnfl => {
     return{
-      gameDate: h.date,
-      gameHome: teamsNFL.find(t => t.id === h.homeCompetitorId).teamName,
-      gameAway: teamsNFL.find(t => t.id === h.awayCompetitorId).teamName
+      gameDate: hnfl.date,
+      gameHome: teamsNFL.find(tnfl => tnfl.id === hnfl.homeCompetitorId).teamName,
+      gameAway: teamsNFL.find(tnfl => tnfl.id === hnfl.awayCompetitorId).teamName
     }
   })
-}
+};
 
 
 //============= NBA ====================
@@ -282,27 +304,27 @@ axios.request(options5).then(function (response) {
 
 //NBA Teams Function
 function teamNBAStats() {
-  return teamsNBA.map(t => {
+  return teamsNBA.map(tnba => {
     return {
-      id: t.competitorId,
-      teamName: t.name,
-      teamOverall: t.recordOverall,
-      teamConference: t.conferenceName,
-      teamDivision: t.divisionName,
-      teamPlacement: t.place
+      id: tnba.competitorId,
+      teamName: tnba.name,
+      teamOverall: tnba.recordOverall,
+      teamConference: tnba.conferenceName,
+      teamDivision: tnba.divisionName,
+      teamPlacement: tnba.place
     }
   })
-}
+};
 
 //NBA Schedule function
 function nextNBAGame() {
   let hasHappened =  scheduleNBA.filter(game => game.status === 'Pre-Game').slice(0,3)
-  return hasHappened.map(h => {
+  return hasHappened.map(hnba => {
     return{
-      gameDate: h.date,
-      gameHome: teamsNBA.find(t => t.id === h.homeCompetitorId).teamName,
-      gameAway: teamsNBA.find(t => t.id === h.awayCompetitorId).teamName
+      gameDate: hnba.date,
+      gameHome: teamsNBA.find(tnba => tnba.id === hnba.homeCompetitorId).teamName,
+      gameAway: teamsNBA.find(tnba => tnba.id === hnba.awayCompetitorId).teamName
     }
   })
-}
+};
 

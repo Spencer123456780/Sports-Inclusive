@@ -180,11 +180,26 @@ margin-right: 25%;
   border-radius: 50%;
   background-color: lightblue;
   margin-top: 10%;
+  padding-bottom: 20%;
 }
 #ImageName{
   Color: blue;
-  margin-top: 48%;
+  margin-top: 20%;
 }
+
+#AccFN{
+margin-top: 8%;
+}
+#AccLN{
+  margin-top: 15%;
+}
+#Emailz{
+  margin-top: 15%;
+}
+#PassAndWords{
+  margin-top: 20%;
+}
+
 
 #AccountInfomation{
   text-align: left;

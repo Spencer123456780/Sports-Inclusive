@@ -1,15 +1,74 @@
-const express = require("express");
-const axios = require("axios");
-const PORT = process.env.PORT || 5000;
+import express, { json } from 'express';
 const app = express();
+import axios from 'axios';
+const PORT = process.env.PORT || 5000;
+import cors from 'cors';
+import fs from 'fs';
+import _ from 'underscore';
+import { exit } from 'process';
 
+app.use(cors());
+app.use(express.json());
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
 });
 
+
+var exists = fs.existsSync('dataset.json');
+if(exists) {
+  console.log("loading into the users data");
+  var data = fs.readFileSync('dataset.json', 'utf8');
+  obj = JSON.parse(data);
+} else {
+  console.log("Creating new data storage")
+  var obj = {user:[]};
+};
+
+
+app.post('/newuser', (req, res) => {
+  console.log(req.body.Firstname)
+  const Firstname = req.body.Firstname
+  const Lastname = req.body.Lastname
+  const Email = req.body.Email
+  const Password = req.body.Password
+  const rs = {Firstname, Lastname, Email, Password}
+  
+  console.log(JSON.stringify(rs))
+  
+  if(!rs.Email || !rs.Firstname || !rs.Lastname){
+    let outcome = {
+      info:"Please fill in all catogories or confirm that passwords are matching"
+    }
+    res.send(outcome);
+  }
+  else{
+    obj.user.push({
+      Firstname:req.body.Firstname,
+      Lastname:req.body.Lastname,
+      Email:req.body.Email,
+      Password:req.body.Password
+    });
+    let data = JSON.stringify(obj, null, 2);
+    fs.writeFile('dataset.json', data, confirm);
+    function confirm(err)
+            {         
+            let outcome={
+                name:req.body.fname,
+                status:"success",
+                info:` :Data is recived thank you  ${firstname}`
+             }
+             res.send(outcome);
+             console.log(outcome);
+          }
+     }
+});
+
+
+
+
+
 let teamsNHL, teamsNFL, teamsNBA;
 let scheduleNHL, scheduleNFL, scheduleNBA;
-
 //============== NHL =====================
 
 //NHL Teams api call
@@ -42,33 +101,34 @@ axios.request(options).then(function (response) {
     console.error(error);
 });
 
+//NHL Teams Function
+function teamNHLStats() {
+  return teamsNHL.map(tNHL => {
+    return {
+      id: tNHL.competitorId,
+      teamName: tNHL.name,
+      teamPoints: tNHL.points,
+      teamOverall: tNHL.recordOverall,
+      teamConference: tNHL.conferenceName,
+      teamDivision: tNHL.divisionName,
+      teamPlacement: tNHL.place
+    }
+  })
+};
+
 
 //NHL Schedule function
 function nextNHLGame() {
   let hasHappened =  scheduleNHL.filter(game => game.status === 'Pre-Game').slice(0,3)
-  return hasHappened.map(h => {
+  return hasHappened.map(hNHL => {
     return{
-      gameDate: h.date,
-      gameHome: teamsNHL.find(t => t.id === h.homeCompetitorId).teamName,
-      gameAway: teamsNHL.find(t => t.id === h.awayCompetitorId).teamName
+      gameDate: hNHL.date,
+      gameHome: teamsNHL.find(tNHL => tNHL.id === hNHL.homeCompetitorId).teamName,
+      gameAway: teamsNHL.find(tNHL => tNHL.id === hNHL.awayCompetitorId).teamName
     }
   })
-}
+};
 
-//NHL Teams Function
-function teamNHLStats() {
-  return teamsNHL.map(t => {
-    return {
-      id: t.competitorId,
-      teamName: t.name,
-      teamPoints: t.points,
-      teamOverall: t.recordOverall,
-      teamConference: t.conferenceName,
-      teamDivision: t.divisionName,
-      teamPlacement: t.place
-    }
-  })
-}
 
 
 //============= NFL ====================
@@ -105,14 +165,14 @@ axios.request(options3).then(function (response) {
 
 //NFL Teams Function
 function teamNFLStats() {
-  return teamsNFL.map(t => {
+  return teamsNFL.map(tNFL => {
     return {
-      id: t.competitorId,
-      teamName: t.name,
-      teamOverall: t.recordOverall,
-      teamConference: t.conferenceName,
-      teamDivision: t.divisionName,
-      teamPlacement: t.place
+      id: tNFL.competitorId,
+      teamName: tNFL.name,
+      teamOverall: tNFL.recordOverall,
+      teamConference: tNFL.conferenceName,
+      teamDivision: tNFL.divisionName,
+      teamPlacement: tNFL.place
     }
   })
 }
@@ -120,11 +180,11 @@ function teamNFLStats() {
 //NFL Schedule function
 function nextNFLGame() {
   let hasHappened =  scheduleNFL.filter(game => game.status === 'Pre-Game').slice(0,3)
-  return hasHappened.map(h => {
+  return hasHappened.map(hNFL => {
     return{
-      gameDate: h.date,
-      gameHome: teamsNFL.find(t => t.id === h.homeCompetitorId).teamName,
-      gameAway: teamsNFL.find(t => t.id === h.awayCompetitorId).teamName
+      gameDate: hNFL.date,
+      gameHome: teamsNFL.find(tNFL => tNFL.id === hNFL.homeCompetitorId).teamName,
+      gameAway: teamsNFL.find(tNFL => tNFL.id === hNFL.awayCompetitorId).teamName
     }
   })
 }
@@ -164,14 +224,14 @@ axios.request(options5).then(function (response) {
 
 //NBA Teams Function
 function teamNBAStats() {
-  return teamsNBA.map(t => {
+  return teamsNBA.map(tNBA => {
     return {
-      id: t.competitorId,
-      teamName: t.name,
-      teamOverall: t.recordOverall,
-      teamConference: t.conferenceName,
-      teamDivision: t.divisionName,
-      teamPlacement: t.place
+      id: tNBA.competitorId,
+      teamName: tNBA.name,
+      teamOverall: tNBA.recordOverall,
+      teamConference: tNBA.conferenceName,
+      teamDivision: tNBA.divisionName,
+      teamPlacement: tNBA.place
     }
   })
 }
@@ -179,11 +239,11 @@ function teamNBAStats() {
 //NBA Schedule function
 function nextNBAGame() {
   let hasHappened =  scheduleNBA.filter(game => game.status === 'Pre-Game').slice(0,3)
-  return hasHappened.map(h => {
+  return hasHappened.map(hNBA => {
     return{
-      gameDate: h.date,
-      gameHome: teamsNBA.find(t => t.id === h.homeCompetitorId).teamName,
-      gameAway: teamsNBA.find(t => t.id === h.awayCompetitorId).teamName
+      gameDate: hNBA.date,
+      gameHome: teamsNBA.find(tNBA => tNBA.id === hNBA.homeCompetitorId).teamName,
+      gameAway: teamsNBA.find(tNBA => tNBA.id === hNBA.awayCompetitorId).teamName
     }
   })
 }

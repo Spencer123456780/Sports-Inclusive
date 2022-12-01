@@ -1,23 +1,14 @@
 import React from "react";
 import {useState} from 'react';
 import '../css/App.css';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { fa2, fa9, faUser, faUserLarge } from '@fortawesome/free-solid-svg-icons';
+const profileIcon = <FontAwesomeIcon icon={faUser} size= '10x'/>
 
 
 
 
 const AccountPage = () => {
-    const[Firstname, setName] = useState("")    
-    const[Lastname, setLastname] = useState("")
-    const[Email, setEmail] = useState("")
-    const[Password, setPassword] = useState("")
-    const[ConfirmPassword, setConfermPassword]= useState("")
-
-
-    const handleSubmit = ()=>
-    {
-        
-    }
 
     return(
         <>
@@ -25,21 +16,19 @@ const AccountPage = () => {
             <div id="AccountPageSpacing">
             
                 <div id="AccountImage">
-                <h3 id="ImageName">Image Here</h3>
+                <h3 id="ImageName">{profileIcon}</h3>
                 </div>
 
                 <div id="AccountInfomation">
                     <br/>
                     <div id="AccountPageForms">
                         <form>
-                            <div> <p> First Name: </p> <input className='AccountInfoInput' type="text" onChange={(e)=>setName(e.target.value)}/> </div>
-                            <div> <p> Last Name: </p> <input className='AccountInfoInput' type="text" onChange={(e)=>setLastname(e.target.value)}/> </div>
-                            <div> <p> Email: </p> <input className='AccountInfoInput' type="email" onChange={(e)=>setEmail(e.target.value)} /> </div>
-                            <div> <p> Password: </p> <input  className='AccountInfoInput' type="password" onChange={(e)=>setPassword(e.target.value)}/></div>
-                            <div> <p> Confirm Password: </p> <input className='AccountInfoInput' type="password" onChange={(e)=>setConfermPassword(e.target.value)}/> </div>
+                            <div><p id="AccFN"> First Name: </p>  </div>
+                            <div><p id="AccLN"> Last Name: </p>   </div>
+                            <div><p id="Emailz"> Email: </p>   </div>
+                            <div><p id="PassAndWords"> Password: </p> </div>
                             <br/> 
                             <br/> 
-                            <div><button onClick={handleSubmit}> Update </button></div> 
                             <br/>           
                         </form>
                     </div>

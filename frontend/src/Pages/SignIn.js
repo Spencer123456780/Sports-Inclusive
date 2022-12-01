@@ -7,7 +7,7 @@ import Axios from 'axios'
 
 
 
-
+/*
 function AccountSignIn(){
     const[Email, setEmail] = useState("")
     const[Password, setPassword] = useState("")
@@ -15,26 +15,56 @@ function AccountSignIn(){
 
     const handleSubmit = ()=>
     {
-        const email = {Email:Email}
-        console.log(email);
+        const SigninData = {Email:Email, Password: Password}
+        console.log(SigninData);
 
-    Axios.get(`http://localhost:5000/user/`+Email)
-    .then((response) => {
-        console.log(response);
-        console.log("get the response and send me to account page")
-    })
+        Axios.get(`http://localhost:5000/Signin/`+ Email)
+        .then((response) => {
+            console.log(response)
+            
+            if(response == "No User Found")
+            {
+                document.getElementById("SigninOutcome").innerHTML = response;
+            }
+            else {
+                //navigate('/AccountPage');
+            }
+        })
+    } */
+
+
+function AccountSignIn(){
+    const[Email, setEmail] = useState("")
+    const[Password, setPassword] = useState("")
+    //const nav = useNavigate();
+
+    const handleSubmit = () =>
+    {
+        Axios.get('http://localhost:5000/signin/'+ Email)
+        .then((response) => {
+            //nav('/NBA');
+            // setEmail(response.Email)
+            // setPassword(response.Password
+        }).catch((error) =>{
+            console.warn('Error occured: '+error);
+        })
     }
+    
+
+
+
 
     return(
         <div className='AccountCreation'>
             <div className='AccountForm'>      
-                <form onSubmit={handleSubmit}>
+                <form>
+                    <div> <p id = 'SigninOutcome'></p></div>
                     <div> <p> Email: </p> <input name="Email" className='AccountInput' type="email" onChange={(e)=>setEmail(e.target.value)} /> </div>
                     <div> <p> Password: </p> <input name="Password" className='AccountInput' type="password" onChange={(e)=>setPassword(e.target.value)}/></div>
                     <br /> 
                     <br /> 
 
-                    <div> <button onClick={handleSubmit}>Sign In</button> <Link to ='/AccountCreation'> Create an Account</Link> </div>
+                    <div> <Link to = "/AccountPage"><button onClick={handleSubmit}>Sign In</button></Link> <Link to ='/AccountCreation'> Create an Account</Link> </div>
                     <br/>           
                 </form>
             </div>
@@ -43,3 +73,23 @@ function AccountSignIn(){
 }
 
 export default AccountSignIn;
+
+
+/*
+function AccountSignIn(){
+    const[Email, setEmail] = useState("")
+    const[Password, setPassword] = useState("")
+    const nav = useNavigate();
+
+    const submitPost = () =>
+    {
+        Axios.get('http://localhost:5000/signin/'+ Email)
+        .then((response) => {
+            nav('/NBA');
+            // setEmail(response.Email)
+            // setPassword(response.Password)
+        }).catch((error) =>{
+            console.warn('Error occured: '+error);
+        })
+    }
+} */
