@@ -11,16 +11,17 @@ const NFL = () => {
                     <img src={NFLIntroPic} id = "NFL-Left-News"></img>
                 </div>
                 <div id = "NFL-Left-Text">
-                    <p>American football is a team sport played by two teams of eleven players
-                         on a rectangular field with goalposts at each end. 
-                         The offense team attempts to advance down the field by running with the ball or passing it, 
-                         while the defense aims to stop the offense's and to take control of the ball for themselves. 
-                         The offense must advance at least ten yards in four downs or plays; 
-                         if they fail, they turn over the football to the defense, but if they succeed,
-                          they are given a new set of four downs to continue the drive. 
-                          Points are scored by advancing the ball into the opposing team's end zone
-                           for a touchdown or kicking the ball through the opponent's goalposts. 
-                           The team with the most points at the end of a game wins.</p>
+                    <p> American football is a team sport played by two teams of eleven players
+                        on a rectangular field with goalposts at each end. 
+                        The offense team attempts to advance down the field by running with the ball or passing it, 
+                        while the defense aims to stop the offense's and to take control of the ball for themselves. 
+                        The offense must advance at least ten yards in four downs or plays; 
+                        if they fail, they turn over the football to the defense, but if they succeed,
+                        they are given a new set of four downs to continue the drive. 
+                        Points are scored by advancing the ball into the opposing team's end zone
+                        for a touchdown or kicking the ball through the opponent's goalposts. 
+                        The team with the most points at the end of a game wins.
+                    </p>
                 </div>
                 <div id = "NFL-Tag-Box">
                     <p id = "NFL-Tag">#NFL</p>
