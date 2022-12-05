@@ -217,14 +217,26 @@ margin-left: 2%;
   text-align: left;
   margin-left: 3em;
 }
+#NFL-Title{
+  text-align: left;
+  margin-left: 3em;
+}
+
 
 #NHL-Title1{
+  text-align: left;
+  margin-top: -0.4em;
+}
+#NFL-Title1{
   text-align: left;
   margin-top: -0.4em;
 
 }
 
 #NHL-Title2{
+  margin-bottom: -0.05em;
+}
+#NFL-Title2{
   margin-bottom: -0.05em;
 }
 
@@ -238,8 +250,34 @@ margin-left: 2%;
   border: 3px solid gray;
   float: left;
 }
+#NFL-Left{
+  width: 30em;
+  height: 34em;
+  padding: 0.5em;
+  margin-top: 3em;
+  margin-left: 2em;
+  text-align: left;
+  border: 3px solid gray;
+  float: left;
+}
 
- #NHL-Left-News{
+
+#NHL-Left-News{
+  width: 22em;
+  height: 12em;
+  margin: auto;
+  margin-left: 10%;
+  background-color: gray;
+}
+#NFL-Left-News{
+  width: 22em;
+  height: 12em;
+  margin: auto;
+  margin-left: 10%;
+  background-color: gray;
+}
+
+ #Sports-Left-News{
    width: 22em;
    height: 12em;
    margin: auto;
@@ -253,17 +291,36 @@ margin-left: 2%;
    font-size: small;
    color: lightgray;
  }
+ #NFL-Left-Text{
+  width: 26em;
+  height: 15em;
+  margin: auto;
+  font-size: small;
+  color: lightgray;
+  padding-bottom: 20%;
+}
 
- #NHL-Bottom-Text{
+ #Home-Sports-Bottom-Text{
    margin-top: 9em;
    text-align: center;
    font-weight: bold;
    text-decoration: underline;
    font-size: 0.7em;
+   color: white;
  }
 
 
+
  #NHL-Right{
+  width: 45em;
+  height: 32em;
+  padding: 0.5em;
+  margin-top: 3em;
+  margin-right: 2em;
+  border: 3px solid gray;
+  float: right;
+ }
+ #NFL-Right{
   width: 45em;
   height: 32em;
   padding: 0.5em;
@@ -281,6 +338,14 @@ margin-left: 2%;
    flex-wrap: nowrap;
    border: 1px solid white;
  }
+ #NFL-Right-Scoreboard{
+  width: 15em;
+  margin-top: 4em;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  border: 1px solid white;
+}
 
  #NHL-Right-Game{
     width: 10em;
@@ -288,6 +353,12 @@ margin-left: 2%;
     margin-left: 2em;
     float: left;
  }
+ #NFL-Right-Game{
+  width: 10em;
+  margin-top: 0.5em;
+  margin-left: 2em;
+  float: left;
+}
 
  #NHL-Game-Score{
    width: 100%;
@@ -298,12 +369,29 @@ margin-left: 2%;
    flex-direction: row;
    flex-wrap: nowrap;
  }
+ #NFL-Game-Score{
+  width: 100%;
+  height: 6em;
+  margin-top: -1.5em;
+  margin-left: 0.5em;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
 
  #NHL-Score-Text-Top{
   margin-top: -0.5em;
  font-size: 0.6em;
 }
+#NFL-Score-Text-Top{
+  margin-top: -0.5em;
+ font-size: 0.6em;
+}
  #NHL-Score-Text{
+  margin-top: -2em;
+  font-size: 0.6em;
+ }
+ #NFL-Score-Text{
   margin-top: -2em;
   font-size: 0.6em;
  }
@@ -314,13 +402,26 @@ margin-left: 2%;
   width:28em;
   margin-top: -26em;
 }
+#NFL-Right-Table{
+  float: right;
+  width:28em;
+  margin-top: -26em;
+}
 
 #NHL-Table-West{
   text-align: left;
   float: left;
 }
+#NFL-Table-West{
+  text-align: left;
+  float: left;
+}
 
 #NHL-Table-East{
+  text-align: left;
+  float: right;
+}
+#NFL-Table-East{
   text-align: left;
   float: right;
 }
@@ -388,12 +489,22 @@ th{
 #NHL-Bottom-News{
   margin-top: 16em;
 }
+#NFL-Bottom-News{
+  margin-top: 16em;
+}
 
 #NHL-Bottom-News1{
   margin-left: -8em;
 }
 
 #NHL-Tag-Box{
+  margin-left: 4.5em;
+  margin-top: -5.5em;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+#NFL-Tag-Box{
   margin-left: 4.5em;
   margin-top: -5.5em;
   display: flex;
@@ -407,8 +518,18 @@ th{
   flex-direction: row;
   flex-wrap: nowrap;
 }
+#NFL-Tag-Box1{
+  margin-left: 3em;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
 
 #NHL-Tag{
+  font-size: 0.6em;
+  margin-left: 0.5em;
+}
+#NFL-Tag{
   font-size: 0.6em;
   margin-left: 0.5em;
 }
@@ -429,6 +550,11 @@ th{
 }
 
 #NHL-Inputs{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+#NFL-Inputs{
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -477,6 +603,8 @@ th{
 #HomeLeft-Tag{
   font-size: 0.6em;
   margin-left: 0.5em;
+  text-decoration: none;
+  color: white;
 }
 
 
@@ -522,6 +650,8 @@ th{
 #New-Tag{
   font-size: 0.6em;
   margin-left: 0.5em;
+  text-decoration: none;
+  color: white;
 }
 
 #select-my-team{

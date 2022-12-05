@@ -65,48 +65,6 @@ app.post('/newuser', (req, res) => {
 
 
 
-
-
-
-
-
-/*
-
-app.get('/Signin:Email', (req, res) =>{
-  const file_location ='./dataset.json';
-  if(fs.existsSync(file_location))
-  {
-    if(_.isEmpty(obj)) 
-    {
-      res.send("There is no user with that information")
-    } else 
-    {
-      var data = fs.readFileSync('dataset.json', 'utf8');
-      obj = JSON.parse(data);
-      var matchingData ={};
-      var val = req.params.Email;
-      //var val2 = req.params.Password;
-      matchingData = []
-      for (var i = 0, l = obj.user.length; i < l; i++)
-      {
-        var myobj = obj.user[i].Email;
-        //var myobj2 = obj.user[i].Password;
-        if(val === myobj){
-          let reply = {
-            email:req.params.Email,
-          }
-          matchingData.push(reply);
-          console.log(JSON.stringify(matchingData) + "This is the data found"); 
-        }
-      }
-      //res.send(matchingdata);          
-      res.redirect("http://localhost:3000/AccountPage");
-    }
-  } else {              
-    res.send("No user found");
-  }
-}) */
-
 app.get('/signin/:Email', (req, res) =>{
   const file_location = './dataset.json';
   if (fs.existsSync(file_location)){
@@ -133,18 +91,7 @@ app.get('/signin/:Email', (req, res) =>{
   }else{
     res.send("No matching user");
   }
-})
-
-
-
-
-
-
-
-
-
-
-
+});
 
 
 

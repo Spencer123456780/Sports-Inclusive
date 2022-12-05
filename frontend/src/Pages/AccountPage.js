@@ -6,8 +6,6 @@ import { fa2, fa9, faUser, faUserLarge } from '@fortawesome/free-solid-svg-icons
 const profileIcon = <FontAwesomeIcon icon={faUser} size= '10x'/>
 
 
-
-
 const AccountPage = () => {
 
     return(

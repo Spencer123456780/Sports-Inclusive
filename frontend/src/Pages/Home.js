@@ -1,47 +1,51 @@
 import React from 'react';
- 
+import { Link } from "react-router-dom"; 
+import sportsPic from '../img/Sports.png';
+import NBAPic from '../img/NBASweep.png';
+import NHLPic from '../img/NHLSweep.png';
+import NFLPic from '../img/NFLSweep.png';
+
 const home = () => {
     return (
        <div>
           <h1 id='Title'>Top Stories</h1>
             <div id='Inlayed'>
                 <div>
-                    <h4  id = "Home-Title">Weekly Sports Highlights</h4>
-                    <div id = "NHL-Left-News">
-
+                    <h4  id = "Home-Title">Website Introduction</h4>
+                    <div>
+                        <img src = {sportsPic} id = "Sports-Left-News"></img>
                     </div>
                     <div id = "NHL-Left-Text">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet massa vitae tortor condimentum lacinia. Vitae elementum curabitur vitae nunc. Non tellus orci ac auctor augue. Eu consequat ac felis donec et odio pellentesque diam. Pharetra et ultrices neque ornare aenean.</p>
+                        <p>This is a Sports Website with the newest scheduals for each team in the NBA, NHL and NFL. The objective of this website is to allow the view to check when there favoret team is playing.</p>
                     </div>
                     <div id = "NHL-Tag-Box">
-                        <p id = "HomeLeft-Tag">#NBA</p>
-                        <p id = "HomeLeft-Tag">#NHL</p>
-                        <p id = "HomeLeft-Tag">#NFL</p>
+                        <p> <Link id = "HomeLeft-Tag" to={'/NBA'}>#NBA</Link></p>
+                        <p> <Link id = "HomeLeft-Tag" to={'/NHLPlayers'}>#NHL</Link></p>
+                        <p> <Link id = "HomeLeft-Tag" to={'/NFLPlayers'}>#NFL</Link></p>
                     </div>
-                    <h5 id = "NHL-Bottom-Text">See More NHL</h5>
+                    <h5> <Link id = "Home-Sports-Bottom-Text" to={'/NBA'}>See More NBA</Link> <Link id = "Home-Sports-Bottom-Text" to={'/NHLPlayers'}>See More NHL</Link> <Link id = "Home-Sports-Bottom-Text" to={'/NFLPlayers'}>See More NFL</Link></h5>
                 </div>
 
                 <div id='HomePageRight'>
                     <div id = "Artical">
 
                         <div id = "News-Artical">
-                            <div id = "Artical-Image"></div>
-                            <h5 id = "Artical-Title">New NHL, NFL and NBA app sweeps the nation.</h5>
+                            <div>
+                                <img src = {NBAPic} id = "Artical-Image"></img>
+                            </div>
+                            <h5 id = "Artical-Title">NBA Teams and there Scheduals.</h5>
                             <div id = "New-Tag-Box">
-                                <p id = "New-Tag">#NBA</p>
-                                <p id = "New-Tag">#NHL</p>
-                                <p id = "New-Tag">#NFL</p>
+                                <p> <Link id = "New-Tag" to={'/NBA'}>#NBA</Link></p>
                             </div>
                         </div>
 
                         <div id = "News-Artical-Bottom">
-                            <div id = "Artical-Image">
-
+                            <div>
+                            <img src = {NFLPic} id = "Artical-Image"></img>
                             </div>
-                            <h5 id = "Artical-Title">Calgary Flames off to a amazing start to the 2022/23 regular seasson</h5>
+                            <h5 id = "Artical-Title">NFL Teams and there Scheduals</h5>
                             <div id = "New-Tag-Box">
-                                <p id = "New-Tag">#NHL</p>
-                                <p id = "New-Tag">#Calgary Flames</p>
+                            <p> <Link id = "New-Tag" to={'/NFLPlayers'}>#NFL</Link></p>
                             </div>
                         </div>
                     </div>
@@ -49,12 +53,12 @@ const home = () => {
                     <div id = "Artical1">
 
                         <div id = "News-Artical">
-                            <div id = "Artical-Image"></div>
-                                <h5 id = "Artical-Title">New NHL, NFL and NBA app sweeps the nation</h5>
+                            <div>
+                                <img src = {NHLPic} id = "Artical-Image"></img>
+                            </div>
+                                <h5 id = "Artical-Title">NHL Teams and there Scheduals</h5>
                             <div id = "New-Tag-Box">
-                                <p id = "New-Tag">#NBA</p>
-                                <p id = "New-Tag">#NHL</p>
-                                <p id = "New-Tag">#NFL</p>
+                                <p> <Link id = "New-Tag" to={'/NHLPlayers'}>#NHL</Link></p>
                             </div>
                         </div>
 

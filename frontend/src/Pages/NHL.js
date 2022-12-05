@@ -1,22 +1,22 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import NHLIntroPic from '../img/NHLIntro.png';
 
 const NHL = () => {
     return (
        <div>
             <div id = "NHL-Left">
-                <h4  id = "NHL-Title">Highlights</h4>
-                <div id = "NHL-Left-News">
-
+                <h4  id = "NHL-Title">Introduction</h4>
+                <div>
+                    <img src={NHLIntroPic} id = "NHL-Left-News"></img>
                 </div>
                 <div id = "NHL-Left-Text">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet massa vitae tortor condimentum lacinia. Vitae elementum curabitur vitae nunc. Non tellus orci ac auctor augue. Eu consequat ac felis donec et odio pellentesque diam. Pharetra et ultrices neque ornare aenean.</p>
+                    <p>Hockey is a winter sport that most people play at somepoint in there life if you grew up in Canada. Unlike most sports hockey can be agressive. The goal of hockey is to put the puck in the enemy teams net will protecting your own. Using nothing but a stick and some blades straped to your feet in order to move.</p>
                 </div>
                 <div id = "NHL-Tag-Box">
                     <p id = "NHL-Tag">#NHL</p>
-                    <p id = "NHL-Tag">#Calgary Flames</p>
                 </div>
-                <h5 id = "NHL-Bottom-Text">See More NHL</h5>
+                <h5 id = "NHL-Bottom-Text">#NHL LIFE</h5>
             </div>
 
 

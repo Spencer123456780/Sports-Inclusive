@@ -4,35 +4,6 @@ import { Link } from "react-router-dom";
 import Axios from 'axios'
 
 
-
-
-
-/*
-function AccountSignIn(){
-    const[Email, setEmail] = useState("")
-    const[Password, setPassword] = useState("")
-
-
-    const handleSubmit = ()=>
-    {
-        const SigninData = {Email:Email, Password: Password}
-        console.log(SigninData);
-
-        Axios.get(`http://localhost:5000/Signin/`+ Email)
-        .then((response) => {
-            console.log(response)
-            
-            if(response == "No User Found")
-            {
-                document.getElementById("SigninOutcome").innerHTML = response;
-            }
-            else {
-                //navigate('/AccountPage');
-            }
-        })
-    } */
-
-
 function AccountSignIn(){
     const[Email, setEmail] = useState("")
     const[Password, setPassword] = useState("")
@@ -49,10 +20,6 @@ function AccountSignIn(){
             console.warn('Error occured: '+error);
         })
     }
-    
-
-
-
 
     return(
         <div className='AccountCreation'>
@@ -73,23 +40,3 @@ function AccountSignIn(){
 }
 
 export default AccountSignIn;
-
-
-/*
-function AccountSignIn(){
-    const[Email, setEmail] = useState("")
-    const[Password, setPassword] = useState("")
-    const nav = useNavigate();
-
-    const submitPost = () =>
-    {
-        Axios.get('http://localhost:5000/signin/'+ Email)
-        .then((response) => {
-            nav('/NBA');
-            // setEmail(response.Email)
-            // setPassword(response.Password)
-        }).catch((error) =>{
-            console.warn('Error occured: '+error);
-        })
-    }
-} */
