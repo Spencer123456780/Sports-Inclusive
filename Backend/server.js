@@ -94,7 +94,7 @@ app.get('/signin/:Email', (req, res) =>{
 });
 
 
-
+let dynamicNHL;
 let teamsNHL, teamsNFL, teamsNBA;
 let scheduleNHL, scheduleNFL, scheduleNBA;
 //============== NHL =====================
@@ -114,20 +114,35 @@ axios.request(options1).then(function (response) {
 });
 
 
-//NHL Schedule api call
-const options = {
+//Get NHL team id
+app.post('/selectedNHLTeam', (req, res) => {
+  dynamicNHL = req.body.teamId;
+  console.log(req.body.teamId);
+  const options0 = {
   method: 'GET',
-  url: 'https://datacrunch.9c9media.ca/statsapi/sports/hockey/leagues/nhl/schedule/competitors/175?brand=tsn&type=json',
-  headers: { 'content-encoding': 'gzip', 'content-type': 'application/json' }
+  url: `https://datacrunch.9c9media.ca/statsapi/sports/hockey/leagues/nhl/schedule/competitors/${dynamicNHL}?/brand=tsn&type=json`,
 };
-axios.request(options).then(function (response) {
-  scheduleNHL = response.data.events
-    let randomName2 = nextNHLGame();
-    console.log(randomName2)
-    console.log(teamsNHL)
-}).catch(function (error) {
-    console.error(error);
-});
+axios.request(options0).then(function (response){
+  const data = nextNHLGame(response.data.events);
+  res.send(data);
+})
+})
+
+
+//NHL Schedule api call
+// const options = {
+//   method: 'GET', 
+//   url: `https://datacrunch.9c9media.ca/statsapi/sports/hockey/leagues/nhl/schedule/competitors/${dynamicNHL}?/brand=tsn&type=json`,
+//   headers: { 'content-encoding': 'gzip', 'content-type': 'application/json' }
+// };
+// axios.request(options).then(function (response) {
+//   scheduleNHL = response.data.events
+//     let randomName2 = nextNHLGame();
+//     console.log(randomName2)
+//     console.log(teamsNHL)
+// }).catch(function (error) {
+//     console.error(error);
+// });
 
 //NHL Teams Function
 function teamNHLStats() {
@@ -146,11 +161,13 @@ function teamNHLStats() {
 
 
 //NHL Schedule function
-function nextNHLGame() {
+function nextNHLGame(scheduleNHL) {
   let hasHappened =  scheduleNHL.filter(game => game.status === 'Pre-Game').slice(0,3)
   return hasHappened.map(hnhl => {
     return{
       gameDate: hnhl.date,
+      gameTime: hnhl.gameStatus,
+      gameVenue: hnhl.venue,
       gameHome: teamsNHL.find(tnhl => tnhl.id === hnhl.homeCompetitorId).teamName,
       gameAway: teamsNHL.find(tnhl => tnhl.id === hnhl.awayCompetitorId).teamName
     }
@@ -158,120 +175,121 @@ function nextNHLGame() {
 };
 
 
-//============= NFL ====================
 
-//NFL team api call
-const options2 = {
-  method: 'GET',
-  url: 'https://datacrunch.9c9media.ca/statsapi/sports/football/leagues/nfl/competitors?brand=tsn&type=json',
-  headers: { 'content-encoding': 'gzip', 'content-type': 'application/json' }
-};
-axios.request(options2).then(function (response) {
-  // console.log(response.data)
-  teamsNFL = response.data
-  teamsNFL = teamNFLStats()
-}).catch(function (error) {
-  console.error(error);
-});
+// //============= NFL ====================
 
-
-//NFL Schedule api call
-const options3 = {
-  method: 'GET',
-  url: 'https://datacrunch.9c9media.ca/statsapi/sports/football/leagues/nfl/schedule/competitors/317?brand=tsn&type=json',
-  headers: { 'content-encoding': 'gzip', 'content-type': 'application/json' }
-};
-axios.request(options3).then(function (response) {
-  scheduleNFL = response.data.events
-    let randomName3 = nextNFLGame();
-    console.log(randomName3)
-    console.log(teamsNFL)
-}).catch(function (error) {
-    console.error(error);
-});
-
-//NFL Teams Function
-function teamNFLStats() {
-  return teamsNFL.map(tnfl => {
-    return {
-      id: tnfl.competitorId,
-      teamName: tnfl.name,
-      teamOverall: tnfl.recordOverall,
-      teamConference: tnfl.conferenceName,
-      teamDivision: tnfl.divisionName,
-      teamPlacement: tnfl.place
-    }
-  })
-};
-
-//NFL Schedule function
-function nextNFLGame() {
-  let hasHappened =  scheduleNFL.filter(game => game.status === 'Pre-Game').slice(0,3)
-  return hasHappened.map(hnfl => {
-    return{
-      gameDate: hnfl.date,
-      gameHome: teamsNFL.find(tnfl => tnfl.id === hnfl.homeCompetitorId).teamName,
-      gameAway: teamsNFL.find(tnfl => tnfl.id === hnfl.awayCompetitorId).teamName
-    }
-  })
-};
+// //NFL team api call
+// const options2 = {
+//   method: 'GET',
+//   url: 'https://datacrunch.9c9media.ca/statsapi/sports/football/leagues/nfl/competitors?brand=tsn&type=json',
+//   headers: { 'content-encoding': 'gzip', 'content-type': 'application/json' }
+// };
+// axios.request(options2).then(function (response) {
+//   // console.log(response.data)
+//   teamsNFL = response.data
+//   teamsNFL = teamNFLStats()
+// }).catch(function (error) {
+//   console.error(error);
+// });
 
 
-//============= NBA ====================
+// //NFL Schedule api call
+// const options3 = {
+//   method: 'GET',
+//   url: 'https://datacrunch.9c9media.ca/statsapi/sports/football/leagues/nfl/schedule/competitors/317?brand=tsn&type=json',
+//   headers: { 'content-encoding': 'gzip', 'content-type': 'application/json' }
+// };
+// axios.request(options3).then(function (response) {
+//   scheduleNFL = response.data.events
+//     let randomName3 = nextNFLGame();
+//     console.log(randomName3)
+//     console.log(teamsNFL)
+// }).catch(function (error) {
+//     console.error(error);
+// });
 
-//NBA team api call
-const options4 = {
-  method: 'GET',
-  url: 'https://datacrunch.9c9media.ca/statsapi/sports/basketball/leagues/nba/competitors?brand=tsn&type=json',
-  headers: { 'content-encoding': 'gzip', 'content-type': 'application/json' }
-};
-axios.request(options4).then(function (response) {
-  // console.log(response.data)
-  teamsNBA = response.data
-  teamsNBA = teamNBAStats()
-}).catch(function (error) {
-  console.error(error);
-});
+// //NFL Teams Function
+// function teamNFLStats() {
+//   return teamsNFL.map(tnfl => {
+//     return {
+//       id: tnfl.competitorId,
+//       teamName: tnfl.name,
+//       teamOverall: tnfl.recordOverall,
+//       teamConference: tnfl.conferenceName,
+//       teamDivision: tnfl.divisionName,
+//       teamPlacement: tnfl.place
+//     }
+//   })
+// };
+
+// //NFL Schedule function
+// function nextNFLGame() {
+//   let hasHappened =  scheduleNFL.filter(game => game.status === 'Pre-Game').slice(0,3)
+//   return hasHappened.map(hnfl => {
+//     return{
+//       gameDate: hnfl.date,
+//       gameHome: teamsNFL.find(tnfl => tnfl.id === hnfl.homeCompetitorId).teamName,
+//       gameAway: teamsNFL.find(tnfl => tnfl.id === hnfl.awayCompetitorId).teamName
+//     }
+//   })
+// };
 
 
-//NBA Schedule api call
-const options5 = {
-  method: 'GET',
-  url: 'https://datacrunch.9c9media.ca/statsapi/sports/basketball/leagues/nba/schedule/competitors/270?brand=tsn&type=json',
-  headers: { 'content-encoding': 'gzip', 'content-type': 'application/json' }
-};
-axios.request(options5).then(function (response) {
-  scheduleNBA = response.data.events
-    let randomName4 = nextNBAGame();
-    console.log(randomName4)
-    console.log(teamsNBA)
-}).catch(function (error) {
-    console.error(error);
-});
+// //============= NBA ====================
 
-//NBA Teams Function
-function teamNBAStats() {
-  return teamsNBA.map(tnba => {
-    return {
-      id: tnba.competitorId,
-      teamName: tnba.name,
-      teamOverall: tnba.recordOverall,
-      teamConference: tnba.conferenceName,
-      teamDivision: tnba.divisionName,
-      teamPlacement: tnba.place
-    }
-  })
-};
+// //NBA team api call
+// const options4 = {
+//   method: 'GET',
+//   url: 'https://datacrunch.9c9media.ca/statsapi/sports/basketball/leagues/nba/competitors?brand=tsn&type=json',
+//   headers: { 'content-encoding': 'gzip', 'content-type': 'application/json' }
+// };
+// axios.request(options4).then(function (response) {
+//   // console.log(response.data)
+//   teamsNBA = response.data
+//   teamsNBA = teamNBAStats()
+// }).catch(function (error) {
+//   console.error(error);
+// });
 
-//NBA Schedule function
-function nextNBAGame() {
-  let hasHappened =  scheduleNBA.filter(game => game.status === 'Pre-Game').slice(0,3)
-  return hasHappened.map(hnba => {
-    return{
-      gameDate: hnba.date,
-      gameHome: teamsNBA.find(tnba => tnba.id === hnba.homeCompetitorId).teamName,
-      gameAway: teamsNBA.find(tnba => tnba.id === hnba.awayCompetitorId).teamName
-    }
-  })
-};
+
+// //NBA Schedule api call
+// const options5 = {
+//   method: 'GET',
+//   url: 'https://datacrunch.9c9media.ca/statsapi/sports/basketball/leagues/nba/schedule/competitors/270?brand=tsn&type=json',
+//   headers: { 'content-encoding': 'gzip', 'content-type': 'application/json' }
+// };
+// axios.request(options5).then(function (response) {
+//   scheduleNBA = response.data.events
+//     let randomName4 = nextNBAGame();
+//     console.log(randomName4)
+//     console.log(teamsNBA)
+// }).catch(function (error) {
+//     console.error(error);
+// });
+
+// //NBA Teams Function
+// function teamNBAStats() {
+//   return teamsNBA.map(tnba => {
+//     return {
+//       id: tnba.competitorId,
+//       teamName: tnba.name,
+//       teamOverall: tnba.recordOverall,
+//       teamConference: tnba.conferenceName,
+//       teamDivision: tnba.divisionName,
+//       teamPlacement: tnba.place
+//     }
+//   })
+// };
+
+// //NBA Schedule function
+// function nextNBAGame() {
+//   let hasHappened =  scheduleNBA.filter(game => game.status === 'Pre-Game').slice(0,3)
+//   return hasHappened.map(hnba => {
+//     return{
+//       gameDate: hnba.date,
+//       gameHome: teamsNBA.find(tnba => tnba.id === hnba.homeCompetitorId).teamName,
+//       gameAway: teamsNBA.find(tnba => tnba.id === hnba.awayCompetitorId).teamName
+//     }
+//   })
+// };
 

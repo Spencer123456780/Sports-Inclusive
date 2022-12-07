@@ -1,8 +1,80 @@
 import React from 'react';
+import Axios from 'axios';
 import { Link } from "react-router-dom";
 import NHLIntroPic from '../img/NHLIntro.png';
+import { useState } from "react";
+import { useEffect } from 'react';
 
 const NHL = () => {
+
+    let dynamicNHL = 181;
+
+    const [TeamList, setTeamList] = useState([{}])
+
+
+    useEffect(() => {
+        const fetchData = async ()=> {
+            //Gets the response from the backend
+            const response = await fetch(`https://datacrunch.9c9media.ca/statsapi/sports/hockey/leagues/nhl/schedule/competitors/${dynamicNHL}?/brand=tsn&type=json`);
+
+            //Sets the Response from the backend to an object called newData
+            const newData = await response.json();
+            setTeamList(newData);
+            console.log(newData);
+        };
+        fetchData();
+    }, [])
+
+    function handleChange(event) {
+        const team = event.target.value;
+        if(team === "Select Your Team") return;//Check for "" value
+        Axios.post('http://localhost:5000/selectedNHLTeam', {teamId: team})
+        .then((responce) => {
+            console.log(responce.data[0].gameAway); //Responce.data
+
+            //Fill spaces here
+
+        })
+        console.log(event.target.value)
+    }
+
+    const optionsNHL = [
+        { id: 'Anaheim Ducks', value: 181},
+        { id: "Arizona Coyotes", value: 180 },
+        { id: "Boston Bruins", value: 165 },
+        { id: "Buffalo Sabres", value: 171 },
+        { id: "Calgary Flames", value: 175 },
+        { id: "Carolina Hurricanes", value: 185 },
+        { id: "Chicago Blackhawks", value: 183 },
+        { id: "Colorado Avalanche", value: 193 },
+        { id: "Columbus Blue Jackets", value: 174 },
+        { id: "Dallas Stars", value: 179 },
+        { id: "Detroit Red Wings", value: 170 },
+        { id: "Edmonton Oilers", value: 178 },
+        { id: "Florda Panthers", value: 162 },
+        { id: "Los Angeles Kings", value: 190 },
+        { id: "Minnesota Wild", value: 188 },
+        { id: "Montreal Canadiens", value: 169 },
+        { id: "Nashville Predators", value: 177 },
+        { id: "New Jersey Devils", value: 182 },
+        { id: "New York Islanders", value: 184 },
+        { id: "New York Rangers", value: 164 },
+        { id: "Ottawa Senators", value: 163 },
+        { id: "Philadelphia Flyers", value: 167 },
+        { id: "Pittsburgh Penguins", value: 168 },
+        { id: "San Jose Sharks", value: 189 },
+        { id: "Seattle Kraken", value: 42082 },
+        { id: "St. Louis Blues", value: 187 },
+        { id: "Tampa Bay Lighting", value: 173 },
+        { id: "Toronto Maple Leafs", value: 166 },
+        { id: "Vancouver Canucks", value: 176 },
+        { id: "Vegas Golden Knights", value: 40292 },
+        { id: "Washington Capitals", value: 172 },
+        { id: "Winnipeg Jets", value: 186 },
+    ];
+
+
+
     return (
        <div>
             <div id = "NHL-Left">
@@ -23,18 +95,14 @@ const NHL = () => {
             <div id = "NHL-Right">
                 <form>
                     <div id='NHL-Inputs'>
-                        <label id = "NHL-Title1"> My NFL Teams
-                            <select>
-                                <option>Anaheim Ducks</option>
-                                <option>Boston Bruins</option>
-                                <option>Calgary Flames</option>
-                                <option>Colorado Avalanche</option>
-                                <option>Los Angeles Kings</option>
-                                <option>Montreal Canadians</option>
-                                <option>New York Rangers</option>
-                                <option>Pittsburgh Penguins</option>
-                                <option>Toronto Maple Leafs</option>
-                                <option>Vegas Golden Knights</option>
+                        <label id = "NHL-Title1"> My NL Teams
+                            <select onChange={handleChange}>
+                                <option value = "Select Your Team">Select Your Team</option>
+                                {optionsNHL.map(Team => (
+                                    //Displays the team name from the API
+                                    <option value = {Team.value} key={Team.value}>{Team.id}</option>
+                                    )
+                                )}
                             </select>
                         </label>
                     </div>
