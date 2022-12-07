@@ -29,15 +29,13 @@ body
   }
 
   #Search_Bar{
-    width: 400px;
-    height: 30px;
     border-radius: 15px;
     border: none;
-    margin-left: 10px;
   }
 
   .Search_Div{
-    display: flex;
+    top: 2%;
+    left: 45%;
   }
 
   .League_Links{
@@ -230,7 +228,6 @@ margin-left: 2%;
 #NFL-Title1{
   text-align: left;
   margin-top: -0.4em;
-
 }
 
 #NHL-Title2{
@@ -659,3 +656,80 @@ th{
   flex-direction: row;
 }
 
+
+
+
+
+
+
+#NFLNext3GamesTitle{
+  margin-bottom: 0%;
+  margin-top: 7%;
+}
+#NFLNext3GamesTitle:hover{
+  color: red;
+  text-shadow: #282c34;
+}
+
+#NFLGameInfoBox{
+  border-style: solid;
+  border-color: rgb(174, 174, 174);
+  padding-bottom: 50%;
+  margin-left: 3%;
+  margin-right: 3%;
+}
+
+#NFLGameTimesTitle{
+  text-align: left;
+  float: left;
+  padding-left: 5%;
+  margin-right: 10%;
+}
+
+#NFLGameLocationTitle{
+  text-align: left;
+  float: left;
+  margin-right:10%;
+}
+
+#NFLHomeTeamTitle{
+  text-align: left;
+  float: left;
+  margin-right:  10%;
+}
+
+#NFLAwayTeamTitle{
+  text-align: left;
+  float: left;
+}
+
+#NFLGameTimes{
+  text-align: left;
+  float: left;
+  border-style: solid;
+  margin-right: 4%;
+  padding: 0.5%;
+}
+
+#NFLGamesLocation{
+  text-align: left;
+  float: left;
+  border-style: solid;
+  margin-right: 4%;
+  padding: 0.5%;
+}
+
+#NFLHomeTeam{
+  text-align: left;
+  float: left;
+  border-style: solid;
+  margin-right: 4%;
+  padding: 0.5%;
+}
+
+#NFLAwayTeam{
+  text-align: left;
+  float: left;
+  border-style: solid;
+  padding: 0.5%;
+}

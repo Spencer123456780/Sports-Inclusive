@@ -20,7 +20,14 @@ const Menu = () => {
                     <div><Link to="/NFL" className='League_Route'>NFL</Link></div>
                 </div>
 
-                <div className='Search_Div'>{magnify}<input id='Search_Bar' type='text' placeholder='  Search..'></input></div>
+                <div className='Search_Div'>{magnify}
+                    <select>
+                        <option>Search..</option>
+                        <option id='Search_Bar'><a href='/NBA'>NBA</a></option>
+                        <option id='Search_Bar'><Link to="/NHL">NHL</Link></option>
+                        <option id='Search_Bar'><Link to="/NFL">NFL</Link></option>
+                    </select>
+                </div>
 
                 <div>
                     <div><Link to='/AccountCreation' className='Account_Route' >{profileIcon} Account</Link></div>
