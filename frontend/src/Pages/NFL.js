@@ -1,7 +1,7 @@
 import React, {useState, useEffect}from 'react';
 //import { Link } from "react-router-dom";
 import NFLIntroPic from '../img/NFLIntro.png';
-
+import Axios from 'axios';
 
 
 const NFL = () => {
@@ -11,10 +11,12 @@ const NFL = () => {
     const [HomeTeam, setHomeTeam] = useState();
     const [AwayTeam, setAwayTeam] = useState ();
 
+    let dynamicNHL = 181;
+
     useEffect(() => {
         const fetchData = async ()=> {
             //Gets the response from the backend
-            const response = await fetch(``);
+            const response = await fetch(`https://datacrunch.9c9media.ca/statsapi/sports/hockey/leagues/nhl/schedule/competitors/${dynamicNHL}?/brand=tsn&type=json`);
             //Sets the Response from the backend to an object called newData
             const newData = await response.json();
             setTeamList(newData);
@@ -23,10 +25,70 @@ const NFL = () => {
         fetchData();
     }, [])
 
-    const handelChange = () =>{
-        
+    function handleChange(event) {
+        const team = event.target.value;
+        if(team === "Select Your Team") return;//Check for "" value
+        Axios.post('http://localhost:5000/selectedNFLTeam', {teamId: team})
+        .then((responce) => {
+            //Game 1
+            console.log("GAME 1 INFO :");
+            console.log(responce.data[0].gameDate); 
+            console.log(responce.data[0].gameVenue);
+            console.log(responce.data[0].gameHome);
+            console.log(responce.data[0].gameAway);
+            //Game 2
+            console.log("GAME 2 INFO :");
+            console.log(responce.data[1].gameDate); 
+            console.log(responce.data[1].gameVenue);
+            console.log(responce.data[1].gameHome);
+            console.log(responce.data[1].gameAway);
+            //Game 3
+            console.log("GAME 3 INFO :");
+            console.log(responce.data[2].gameDate); 
+            console.log(responce.data[2].gameVenue);
+            console.log(responce.data[2].gameHome);
+            console.log(responce.data[2].gameAway);
+
+            
+
+        })
+        console.log(event.target.value)
     }
 
+    const optionsNFL = [
+        { id: 'Arizona Cardinals', value: 317},
+        { id: "Baltimore Ravens", value: 299},
+        { id: "Atlanta Falcons", value: 309},
+        { id: "Buffalo Bills", value: 296},
+        { id: "Carolina Panthers", value: 303},
+        { id: "Cincinnati Bengals", value: 322},
+        { id: "Chicago Bears", value: 305},
+        { id: "Cleveland Browns", value: 316},
+        { id: "Dallas Cowboys", value: 291},
+        { id: "Denver Broncos", value: 314},
+        { id: "Detroit Lions", value: 308},
+        { id: "Houston Texans", value: 306},
+        { id: "Green Bay Packers", value: 304},
+        { id: "Indianapolis Colts", value: 310},
+        { id: "Los Angeles Rams", value: 318},
+        { id: "Jacksonville Jaguars", value: 294},
+        { id: "Minnesota Vikings", value: 312},
+        { id: "Kansas City Chiefs", value: 321},
+        { id: "New Orleans Saints", value: 311},
+        { id: "Las Vegas Raiders", value: 292},
+        { id: "New York Giants", value: 297},
+        { id: "Los Angeles Chargers", value: 315},
+        { id: "Philadelphia Eagles", value: 293},
+        { id: "Miami Dolphins", value: 302},
+        { id: "San Francisco 49ers", value: 319},
+        { id: "New England Patriots", value: 300},
+        { id: "Seattle Seahawks", value: 320},
+        { id: "New York Jets", value: 301},
+        { id: "Tampa Bay Buccaneers", value: 313},
+        { id: "Pittsburgh Steelers", value: 298},
+        { id: "Washington Commanders", value: 295},
+        { id: "Tennessee Titans", value: 307},
+    ];
 
     return (
         <div>
@@ -59,46 +121,15 @@ const NFL = () => {
                 <form>
                     <div id='NFL-Inputs'>
                         <label id = "NFL-Title1"> NFL Teams:
-                            <select value={TeamList}>
-                                <option>--------- Pick Team ---------</option>
-                                {/* Maping Teamlist to the object */}
-                                {TeamList.map(data => (
+                            <select onChange={handleChange}>
+                                <option alue = "Select Your Team">--------- Pick Team ---------</option>
+                                    {/* Maping Teamlist to the object */}
+                                    {optionsNFL.map(Team => (
                                     //Displays the team name from the API
                                     //Name is the property name or colomn name
-                                    <option value={data.id} key={data.id}>{data.name}</option>
-                                ))}
-                                {/*<option id='Arizona-Cardinals' >Arizona Cardinals</option>
-                                <option id='Baltimore-Ravens'>Baltimore Ravens</option>
-                                <option id='Atlanta-Falcons'>Atlanta Falcons</option>
-                                <option id='Buffalo-Bills'>Buffalo Bills</option>
-                                <option id='Carolina-Panthers'>Carolina Panthers</option>
-                                <option id='Cincinnati-Bengals'>Cincinnati Bengals</option>
-                                <option id='Chicago-Bears'>Chicago Bears</option>
-                                <option id='Cleveland-Browns'>Cleveland Browns</option>
-                                <option id='Dallas-Cowboys'>Dallas Cowboys</option>
-                                <option id='Denver-Broncos'>Denver Broncos</option>
-                                <option id='Detroit-Lions'>Detroit Lions</option>
-                                <option id='Houston-Texans'>Houston Texans</option>
-                                <option id='Green-Bay-Packers'>Green Bay Packers</option>
-                                <option id='Indianapolis-Colts'>Indianapolis Colts</option>
-                                <option id='Los-Angeles-Rams'>Los Angeles Rams</option>
-                                <option id='Jacksonville-Jaguars'>Jacksonville Jaguars</option>
-                                <option id='Minnesota-Vikings'>Minnesota Vikings</option>
-                                <option id='Kansas-City-Chiefs'>Kansas City Chiefs</option>
-                                <option id='New-Orleans-Saints'>New Orleans Saints</option>
-                                <option id='Las-Vegas-Raiders'>Las Vegas Raiders</option>
-                                <option id='New-York-Giants'>New York Giants</option>
-                                <option id='Los-Angeles-Chargers'>Los Angeles Chargers</option>
-                                <option id='Philadelphia-Eagles'>Philadelphia Eagles</option>
-                                <option id='Miami-Dolphins'>Miami Dolphins</option>
-                                <option id='San-Francisco-49ers'>San Francisco 49ers</option>
-                                <option id='New-England-Patriots'>New England Patriots</option>
-                                <option id='Seattle-Seahawks'>Seattle Seahawks</option>
-                                <option id='New-York-Jets'>New York Jets</option>
-                                <option id='TampaBay-Buccaneers'>Tampa Bay Buccaneers</option>
-                                <option id='Pittsburgh-Steelers'>Pittsburgh Steelers</option>
-                                <option id='Washington-Commanders'>Washington Commanders</option>
-                                <option id='Tennessee-Titans'>Tennessee Titans</option> */}
+                                    <option value = {Team.value} key={Team.value}>{Team.id}</option>
+                                    )
+                                )}
                             </select>
                         </label>
                     </div>

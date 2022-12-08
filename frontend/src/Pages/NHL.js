@@ -30,8 +30,21 @@ const NHL = () => {
         if(team === "Select Your Team") return;//Check for "" value
         Axios.post('http://localhost:5000/selectedNHLTeam', {teamId: team})
         .then((responce) => {
-            console.log(responce.data[0].gameAway); //Responce.data
-
+            //Game 1
+            console.log(responce.data[0].gameDate); //Responce.data
+            console.log(responce.data[0].gameVenue);
+            console.log(responce.data[0].gameHome);
+            console.log(responce.data[0].gameAway);
+            //Game 2
+            console.log(responce.data[1].gameDate); 
+            console.log(responce.data[1].gameVenue);
+            console.log(responce.data[1].gameHome);
+            console.log(responce.data[1].gameAway);
+            //Game 3
+            console.log(responce.data[2].gameDate); 
+            console.log(responce.data[2].gameVenue);
+            console.log(responce.data[2].gameHome);
+            console.log(responce.data[2].gameAway);
             //Fill spaces here
 
         })
