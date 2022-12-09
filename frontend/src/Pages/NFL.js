@@ -5,11 +5,6 @@ import Axios from 'axios';
 
 
 const NFL = () => {
-    const [TeamList, setTeamList] = useState([]);
-    const [GameTime, setTime1] = useState([]);
-    const [GameLocation, setGameLocation] = useState();
-    const [HomeTeam, setHomeTeam] = useState();
-    const [AwayTeam, setAwayTeam] = useState ();
     const [GameData, setGameData] = useState([]);
 
     let dynamicNHL = 181;
@@ -20,7 +15,7 @@ const NFL = () => {
             const response = await fetch(`https://datacrunch.9c9media.ca/statsapi/sports/hockey/leagues/nhl/schedule/competitors/${dynamicNHL}?/brand=tsn&type=json`);
             //Sets the Response from the backend to an object called newData
             const newData = await response.json();
-            setTeamList(newData);
+
             console.log(newData);
         };
         fetchData();

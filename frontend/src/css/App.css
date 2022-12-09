@@ -667,8 +667,7 @@ th{
   margin-top: 7%;
 }
 #NFLNext3GamesTitle:hover{
-  color: red;
-  text-shadow: #282c34;
+  text-shadow: #000000;
 }
 
 #NFLGameInfoBox{
@@ -750,7 +749,11 @@ th{
   color: red;
   text-shadow: #282c34;
 }
+#AwayTeamRed:hover{
+  color: red;
+  text-shadow: #282c34;
+}
 
 #ApiInfo{
-  color: rgb(236, 190, 92);
+  color: rgb(246, 204, 114);
 }
