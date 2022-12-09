@@ -6,13 +6,12 @@ import Axios from 'axios';
 
 const NFL = () => {
     const [GameData, setGameData] = useState([]);
-
-    let dynamicNHL = 181;
+    let dynamicNFL = 181;
 
     useEffect(() => {
         const fetchData = async ()=> {
             //Gets the response from the backend
-            const response = await fetch(`https://datacrunch.9c9media.ca/statsapi/sports/hockey/leagues/nhl/schedule/competitors/${dynamicNHL}?/brand=tsn&type=json`);
+            const response = await fetch(`https://datacrunch.9c9media.ca/statsapi/sports/hockey/leagues/nhl/schedule/competitors/${dynamicNFL}?/brand=tsn&type=json`);
             //Sets the Response from the backend to an object called newData
             const newData = await response.json();
 
@@ -46,7 +45,6 @@ const NFL = () => {
             console.log(responce.data[2].gameHome);
             console.log(responce.data[2].gameAway);
             setGameData(responce.data);
-
         })
         console.log(event.target.value)
     }
@@ -197,7 +195,6 @@ const NFL = () => {
                         </div>
                     </div>
                 </div>
-
             </div>
        </div>
     );
