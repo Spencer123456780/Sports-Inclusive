@@ -5,6 +5,12 @@
       "Lastname": "A",
       "Email": "A@A.A",
       "Password": "12"
+    },
+    {
+      "Firstname": "A",
+      "Lastname": "B",
+      "Email": "B@B.B",
+      "Password": "B"
     }
   ]
 }
