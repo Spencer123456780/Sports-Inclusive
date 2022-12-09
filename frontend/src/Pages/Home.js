@@ -4,6 +4,7 @@ import sportsPic from '../img/Sports.png';
 import NBAPic from '../img/NBASweep.png';
 import NHLPic from '../img/NHLSweep.png';
 import NFLPic from '../img/NFLSweep.png';
+import Schedules from '../img/SchedualesImage.png';
 
 const home = () => {
     return (
@@ -63,11 +64,12 @@ const home = () => {
                         </div>
 
                         <div id = "News-Artical-Bottom">
-                            <div id = "Artical-Image"></div>
-                                <h5 id = "Artical-Title">Calgary Flames off to a amazing start to the 2022/23 regular seasson</h5>
+                            <div id = "Artical-Image">
+                                <img src={Schedules} id = "Artical-Image"></img>
+                            </div>
+                                <h5 id = "Artical-Title">Come fine your favoret teams and when there next game is</h5>
                             <div id = "New-Tag-Box">
-                                <p id = "New-Tag">#NHL</p>
-                                <p id = "New-Tag">#Calgary Flames</p>
+                                <p id = "New-Tag">#Sports Inclusive</p>
                             </div>
                         </div>
                     </div>

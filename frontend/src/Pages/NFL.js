@@ -135,6 +135,7 @@ const NFL = () => {
                 <div>
                     <h2 id='NFLNext3GamesTitle'>Next 3 games In Order</h2>
                 </div>
+                
                 <div id='NFLGameInfoBox'>
 
                     <div id='NFLGameTimesTitle'>

@@ -318,8 +318,8 @@ margin-left: 2%;
   float: right;
  }
  #NFL-Right{
-  width: 45em;
-  height: 32em;
+  width: 57%;
+  height: 50%;
   padding: 0.5em;
   margin-top: 3em;
   margin-right: 2em;
@@ -673,28 +673,29 @@ th{
 #NFLGameInfoBox{
   border-style: solid;
   border-color: rgb(174, 174, 174);
-  padding-bottom: 50%;
+  padding-bottom: 34%;
   margin-left: 3%;
   margin-right: 3%;
+  margin-bottom: 5%;
 }
 
 #NFLGameTimesTitle{
   text-align: left;
   float: left;
   padding-left: 5%;
-  margin-right: 10%;
+  margin-right: 5%;
 }
 
 #NFLGameLocationTitle{
   text-align: left;
   float: left;
-  margin-right:10%;
+  margin-right:5%;
 }
 
 #NFLHomeTeamTitle{
   text-align: left;
   float: left;
-  margin-right:  10%;
+  margin-right:  5%;
 }
 
 #NFLAwayTeamTitle{
@@ -706,7 +707,7 @@ th{
   text-align: center;
   float: left;
   border-style: solid;
-  margin-right: 4%;
+  margin-right: 2%;
   padding: 0.5%;
 }
 
@@ -714,7 +715,7 @@ th{
   text-align: center;
   float: left;
   border-style: solid;
-  margin-right: 4%;
+  margin-right: 2%;
   padding: 0.5%;
 }
 
@@ -722,7 +723,7 @@ th{
   text-align: center;
   float: left;
   border-style: solid;
-  margin-right: 4%;
+  margin-right: 2%;
   padding: 0.5%;
 }
 
