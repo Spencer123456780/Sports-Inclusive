@@ -704,7 +704,7 @@ th{
 }
 
 #NFLGameTimes{
-  text-align: left;
+  text-align: center;
   float: left;
   border-style: solid;
   margin-right: 4%;
@@ -712,7 +712,7 @@ th{
 }
 
 #NFLGamesLocation{
-  text-align: left;
+  text-align: center;
   float: left;
   border-style: solid;
   margin-right: 4%;
@@ -720,7 +720,7 @@ th{
 }
 
 #NFLHomeTeam{
-  text-align: left;
+  text-align: center;
   float: left;
   border-style: solid;
   margin-right: 4%;
@@ -728,8 +728,29 @@ th{
 }
 
 #NFLAwayTeam{
-  text-align: left;
+  text-align: center;
   float: left;
   border-style: solid;
   padding: 0.5%;
+}
+
+#GameTimeRed:hover{
+  color: red;
+  text-shadow: #282c34;
+}
+#GameLocationRed:hover{
+  color: red;
+  text-shadow: #282c34;
+}
+#HomeTeamRed:hover{
+  color: red;
+  text-shadow: #282c34;
+}
+#AwayTeamRed:hover{
+  color: red;
+  text-shadow: #282c34;
+}
+
+#ApiInfo{
+  color: rgb(236, 190, 92);
 }

@@ -6,10 +6,11 @@ import Axios from 'axios';
 
 const NFL = () => {
     const [TeamList, setTeamList] = useState([]);
-    const [GameTime, setGameTime] = useState();
+    const [GameTime, setTime1] = useState([]);
     const [GameLocation, setGameLocation] = useState();
     const [HomeTeam, setHomeTeam] = useState();
     const [AwayTeam, setAwayTeam] = useState ();
+    const [GameData, setGameData] = useState([]);
 
     let dynamicNHL = 181;
 
@@ -31,6 +32,7 @@ const NFL = () => {
         Axios.post('http://localhost:5000/selectedNFLTeam', {teamId: team})
         .then((responce) => {
             //Game 1
+            console.log(responce.data);
             console.log("GAME 1 INFO :");
             console.log(responce.data[0].gameDate); 
             console.log(responce.data[0].gameVenue);
@@ -48,8 +50,7 @@ const NFL = () => {
             console.log(responce.data[2].gameVenue);
             console.log(responce.data[2].gameHome);
             console.log(responce.data[2].gameAway);
-
-            
+            setGameData(responce.data);
 
         })
         console.log(event.target.value)
@@ -139,32 +140,66 @@ const NFL = () => {
                 
                 
                 <div>
-                    <h2 id='NFLNext3GamesTitle'>Next 3 games</h2>
+                    <h2 id='NFLNext3GamesTitle'>Next 3 games In Order</h2>
                 </div>
                 <div id='NFLGameInfoBox'>
-                    <div>
-                        <h4 id='NFLGameTimesTitle'>Game Time:</h4>
+
+                    <div id='NFLGameTimesTitle'>
+                        <h4 id='GameTimeRed'>Game Time:</h4>
+                        <div>
+                            {/* Game Times */}
+                            <p id='NFLGameTimes'>
+                                {GameData.map(Team => (
+                                        //Displays the team name from the API
+                                        //Name is the property name or colomn name
+                                    <p id='ApiInfo' key={Team.id}>{Team.gameTime}</p>
+                                )
+                                )}
+                            </p>
+                        </div>
                     </div>
-                    <div>
-                        <h4 id='NFLGameLocationTitle'>Game Location:</h4>
+
+                    <div id='NFLGameLocationTitle'>
+                        <h4 id='GameLocationRed'>Game Location:</h4>
+                        <div>
+                            {/* Game Location */}
+                            <p id='NFLGamesLocation'>
+                                {GameData.map(Team => (
+                                        //Displays the team name from the API
+                                        //Name is the property name or colomn name
+                                    <p id='ApiInfo' key={Team.id}>{Team.gameVenue}</p>
+                                )
+                                )}          
+                            </p>
+                        </div>
                     </div>
-                    <div>
-                        <h4 id='NFLHomeTeamTitle'>Home Team:</h4>
+
+                    <div id='NFLHomeTeamTitle'>
+                        <h4 id='HomeTeamRed'>Home Team:</h4>
+                        <div>
+                            {/* Game Home Team */}
+                            <p id='NFLHomeTeam'>
+                                {GameData.map(Team => (
+                                        //Displays the team name from the API
+                                        //Name is the property name or colomn name
+                                    <p id='ApiInfo' key={Team.id}>{Team.gameHome}</p>
+                                )
+                                )}
+                            </p>
+                        </div>
                     </div>
-                    <div>
-                        <h4 id='NFLAwayTeamTitle'>Away Team:</h4>
-                    </div>
-                    <div>
-                        <p id='NFLGameTimes'>Game times fo here</p>
-                    </div>
-                    <div>
-                        <p id='NFLGamesLocation'>Game Location Here</p>
-                    </div>
-                    <div>
-                        <p id='NFLHomeTeam'>Home Team Here</p>
-                    </div>
-                    <div>
-                        <p id='NFLAwayTeam'>Away Team Here</p>
+                    
+                    <div id='NFLAwayTeamTitle'>
+                        <h4 id='AwayTeamRed'>Away Team:</h4>
+                        <div>
+                            {/* //Away Team */}
+                            <p id = 'NFLAwayTeam'>
+                                {GameData.map(Team => (
+                                    <p id='ApiInfo' key={Team.id}>{Team.gameAway}</p>
+                                )
+                                )}
+                            </p>
+                        </div>
                     </div>
                 </div>
 
