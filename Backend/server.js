@@ -250,61 +250,73 @@ function nextNFLGame(scheduleNFL) {
 
 
 
-// //============= NBA ====================
+//============= NBA ====================
 
-// //NBA team api call
-// const options4 = {
-//   method: 'GET',
-//   url: 'https://datacrunch.9c9media.ca/statsapi/sports/basketball/leagues/nba/competitors?brand=tsn&type=json',
-//   headers: { 'content-encoding': 'gzip', 'content-type': 'application/json' }
-// };
-// axios.request(options4).then(function (response) {
-//   // console.log(response.data)
-//   teamsNBA = response.data
-//   teamsNBA = teamNBAStats()
-// }).catch(function (error) {
-//   console.error(error);
-// });
+//NBA team api call
+const options4 = {
+  method: 'GET',
+  url: 'https://datacrunch.9c9media.ca/statsapi/sports/basketball/leagues/nba/competitors?brand=tsn&type=json',
+  headers: { 'content-encoding': 'gzip', 'content-type': 'application/json' }
+};
+axios.request(options4).then(function (response) {
+  // console.log(response.data)
+  teamsNBA = response.data
+  teamsNBA = teamNBAStats()
+}).catch(function (error) {
+  console.error(error);
+});
 
 
-// //NBA Schedule api call
-// const options5 = {
-//   method: 'GET',
-//   url: 'https://datacrunch.9c9media.ca/statsapi/sports/basketball/leagues/nba/schedule/competitors/270?brand=tsn&type=json',
-//   headers: { 'content-encoding': 'gzip', 'content-type': 'application/json' }
-// };
-// axios.request(options5).then(function (response) {
-//   scheduleNBA = response.data.events
-//     let randomName4 = nextNBAGame();
-//     console.log(randomName4)
-//     console.log(teamsNBA)
-// }).catch(function (error) {
-//     console.error(error);
-// });
+//NBA Schedule api call
+const options5 = {
+  method: 'GET',
+  url: 'https://datacrunch.9c9media.ca/statsapi/sports/basketball/leagues/nba/schedule/competitors/270?brand=tsn&type=json',
+  headers: { 'content-encoding': 'gzip', 'content-type': 'application/json' }
+};
+axios.request(options5).then(function (response) {
+  scheduleNBA = response.data.events
+    let randomName4 = nextNBAGame();
+    console.log(randomName4)
+    console.log(teamsNBA)
+}).catch(function (error) {
+    console.error(error);
+});
 
-// //NBA Teams Function
-// function teamNBAStats() {
-//   return teamsNBA.map(tnba => {
-//     return {
-//       id: tnba.competitorId,
-//       teamName: tnba.name,
-//       teamOverall: tnba.recordOverall,
-//       teamConference: tnba.conferenceName,
-//       teamDivision: tnba.divisionName,
-//       teamPlacement: tnba.place
-//     }
-//   })
-// };
+//NBA Teams Function
+function teamNBAStats() {
+  return teamsNBA.map(tnba => {
+    return {
+      id: tnba.competitorId,
+      teamName: tnba.name,
+      teamOverall: tnba.recordOverall,
+      teamConference: tnba.conferenceName,
+      teamDivision: tnba.divisionName,
+      teamPlacement: tnba.place
+    }
+  })
+};
 
-// //NBA Schedule function
-// function nextNBAGame() {
-//   let hasHappened =  scheduleNBA.filter(game => game.status === 'Pre-Game').slice(0,3)
-//   return hasHappened.map(hnba => {
-//     return{
-//       gameDate: hnba.date,
-//       gameHome: teamsNBA.find(tnba => tnba.id === hnba.homeCompetitorId).teamName,
-//       gameAway: teamsNBA.find(tnba => tnba.id === hnba.awayCompetitorId).teamName
-//     }
-//   })
-// };
+//NBA Schedule function
+function nextNBAGame() {
+  let hasHappened =  scheduleNBA.filter(game => game.status === 'Pre-Game').slice(0,3)
+  return hasHappened.map(hnba => {
+    return{
+      gameDate: hnba.date,
+      gameHome: teamsNBA.find(tnba => tnba.id === hnba.homeCompetitorId).teamName,
+      gameAway: teamsNBA.find(tnba => tnba.id === hnba.awayCompetitorId).teamName
+    }
+  })
+};
+app.post('/selectedNBATeam', (req, res) => {
+  dynamicNBA = req.body.teamId;
+  console.log(req.body.teamId);
+  const options2 = {
+  method: 'GET',
+  url: `https://datacrunch.9c9media.ca/statsapi/sports/basketball/leagues/nba/schedule/competitors/${dynamicNFL}?brand=tsn&type=json`,
+};
+axios.request(options2).then(function (response){
+  const data2 = nextNBAGame(response.data.events);
+  res.send(data2);
+})
+})
 
