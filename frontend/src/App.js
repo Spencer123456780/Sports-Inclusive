@@ -6,10 +6,8 @@ import AccountCreation from './Pages/AccountCreation';
 import NFL from './Pages/NFL';
 import SignIn from './Pages/SignIn';
 import NHL from './Pages/NHL';
-import NHLplayers from './Pages/NHLplayers';
 import Menu from './Components/Menu';
 import AccountPage from './Pages/AccountPage';
-import NFLPlayers from './Pages/NFLPlayers'
  
 class App extends Component {
   render() {
@@ -26,9 +24,7 @@ class App extends Component {
              <Route path="/NFL" element={<NFL />}/>
              <Route path="/NHL" element={<NHL/>}/>
              <Route path="/SignIn" element={<SignIn />}/>
-             <Route path="/NHLplayers" element={<NHLplayers/>}/>
              <Route path="/AccountPage" element={<AccountPage/>}/>
-             <Route path="/NFLPlayers" element={<NFLPlayers/>}/>
 
             
           <Route component={Error}/>

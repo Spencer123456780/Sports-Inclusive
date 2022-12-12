@@ -14,7 +14,6 @@ const NFL = () => {
             const response = await fetch(`https://datacrunch.9c9media.ca/statsapi/sports/hockey/leagues/nhl/schedule/competitors/${dynamicNFL}?/brand=tsn&type=json`);
             //Sets the Response from the backend to an object called newData
             const newData = await response.json();
-
             console.log(newData);
         };
         fetchData();

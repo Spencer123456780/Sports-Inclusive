@@ -6,10 +6,8 @@ import { useState } from "react";
 import { useEffect } from 'react';
 
 const NHL = () => {
-
+    const [GameData, setGameData] = useState([]);
     let dynamicNHL = 181;
-
-    const [TeamList, setTeamList] = useState([{}])
 
 
     useEffect(() => {
@@ -19,7 +17,6 @@ const NHL = () => {
 
             //Sets the Response from the backend to an object called newData
             const newData = await response.json();
-            setTeamList(newData);
             console.log(newData);
         };
         fetchData();
@@ -45,8 +42,7 @@ const NHL = () => {
             console.log(responce.data[2].gameVenue);
             console.log(responce.data[2].gameHome);
             console.log(responce.data[2].gameAway);
-            //Fill spaces here
-
+            setGameData(responce.data);
         })
         console.log(event.target.value)
     }
@@ -105,14 +101,16 @@ const NHL = () => {
             </div>
 
 
-            <div id = "NHL-Right">
+            <div id = "NFL-Right">
                 <form>
-                    <div id='NHL-Inputs'>
-                        <label id = "NHL-Title1"> My NL Teams
+                    <div id='NFL-Inputs'>
+                        <label id = "NFL-Title1"> NFL Teams:
                             <select onChange={handleChange}>
-                                <option value = "Select Your Team">Select Your Team</option>
-                                {optionsNHL.map(Team => (
+                                <option alue = "Select Your Team">--------- Pick Team ---------</option>
+                                    {/* Maping Teamlist to the object */}
+                                    {optionsNHL.map(Team => (
                                     //Displays the team name from the API
+                                    //Name is the property name or colomn name
                                     <option value = {Team.value} key={Team.value}>{Team.id}</option>
                                     )
                                 )}
@@ -120,153 +118,71 @@ const NHL = () => {
                         </label>
                     </div>
                 </form>
-                <div className='NHL-Team-Player-Links'>
-                    <Link to = "/NHL" className = "toTeam">Teams</Link>
-                    <Link to = "/NHLplayers" className = "toPlayer">Players</Link>
+
+
+                
+                
+                <div>
+                    <h2 id='NFLNext3GamesTitle'>Next 3 games In Order</h2>
                 </div>
-                <div id = "NHL-Right-Scoreboard">
-                    <div id = "NHL-Right-Game">
-                        <p id = "NHL-Score-Text-Top">October 27th</p>
-                        <p id = "NHL-Score-Text-Top">2:00pm</p>
-                        <div id = "NHL-Game-Score">
-                            <div id = "NHL-Game-Left">
-                                <h1>0</h1>
-                                <p id = "NHL-Score-Text">Calgary Flames</p>
-                            </div>
-                            <h1>-</h1>
-                            <div id = "NHL-Score-Right">
-                                <h1>0</h1>
-                                <p id = "NHL-Score-Text">Buffalo Sabers</p>
-                            </div>
+                
+                <div id='NFLGameInfoBox'>
+
+                    <div id='NFLGameTimesTitle'>
+                        <h4 id='GameTimeRed'>Game Time:</h4>
+                        <div>
+                            {/* Game Times */}
+                            <p id='NFLGameTimes'>
+                                {GameData.map(Team => (
+                                        //Displays the team name from the API
+                                        //Name is the property name or colomn name
+                                    <p id='ApiInfo' key={Team.id}>{Team.gameTime}</p>
+                                )
+                                )}
+                            </p>
                         </div>
                     </div>
 
-                    <div id = "NHL-Right-Game">
-                        <p id = "NHL-Score-Text-Top">October 30th</p>
-                        <p id = "NHL-Score-Text-Top">8:00pm</p>
-                        <div id = "NHL-Game-Score">
-                            <div id = "NHL-Game-Left">
-                                <h1>0</h1>
-                                <p id = "NHL-Score-Text">Calgary Flames</p>
-                            </div>
-                            <h1>-</h1>
-                            <div id = "NHL-Score-Right">
-                                <h1>0</h1>
-                                <p id = "NHL-Score-Text">Toronto Maple Leafs</p>
-                            </div>
+                    <div id='NFLGameLocationTitle'>
+                        <h4 id='GameLocationRed'>Game Location:</h4>
+                        <div>
+                            {/* Game Location */}
+                            <p id='NFLGamesLocation'>
+                                {GameData.map(Team => (
+                                        //Displays the team name from the API
+                                        //Name is the property name or colomn name
+                                    <p id='ApiInfo' key={Team.id}>{Team.gameVenue}</p>
+                                )
+                                )}          
+                            </p>
                         </div>
                     </div>
 
-                    <div id = "NHL-Right-Game">
-                        <p id = "NHL-Score-Text-Top">October 30th</p>
-                        <p id = "NHL-Score-Text-Top">8:00pm</p>
-                        <div id = "NHL-Game-Score">
-                            <div id = "NHL-Game-Left">
-                                <h1>0</h1>
-                                <p id = "NHL-Score-Text">Calgary Flames</p>
-                            </div>
-                            <h1>-</h1>
-                            <div id = "NHL-Score-Right">
-                                <h1>0</h1>
-                                <p id = "NHL-Score-Text">Toronto Maple Leafs</p>
-                            </div>
+                    <div id='NFLHomeTeamTitle'>
+                        <h4 id='HomeTeamRed'>Home Team:</h4>
+                        <div>
+                            {/* Game Home Team */}
+                            <p id='NFLHomeTeam'>
+                                {GameData.map(Team => (
+                                        //Displays the team name from the API
+                                        //Name is the property name or colomn name
+                                    <p id='ApiInfo' key={Team.id}>{Team.gameHome}</p>
+                                )
+                                )}
+                            </p>
                         </div>
-                    </div>
-                </div>
-
-                <div id = "NHL-Right-Table">
-                    <div id = "NHL-Table-West">
-                        <h5>Western Confrence</h5>
-                        <table>
-                            <tr>
-                                <th>Team</th>
-                                <th>W</th>
-                                <th>L</th>
-                                <th>P</th>
-                            </tr>
-                            <tr>
-                                <td>Anaheim Ducks</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>Calgary Flames</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>Colorado Avalanche</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>Los Angeles Kings</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>Vegas Golden Knights</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                        </table>
-                    </div>
-
-                    <div id = "NHL-Table-East">
-                        <h5>Eastern Confrence</h5>
-                        <table>
-                            <tr>
-                                <th>Team</th>
-                                <th>W</th>
-                                <th>L</th>
-                                <th>P</th>
-                            </tr>
-                            <tr>
-                                <td>Boston Bruins</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>Montreal Canadians</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>New York Rangers</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>Pittsburgh Penguins</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>Toronto Maple Leafs</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                        </table>
                     </div>
                     
-                    <div >
-                    <div id = "NHL-Bottom-News">
-                        <h4  id = "NHL-Title2">Flames Goals VS Boston</h4>
-                        <div id = "NHL-Left-News"></div>
-                        </div>
-                        <div id = "NHL-Tag-Box1">
-                            <p id = "NHL-Tag">#NHL</p>
-                            <p id = "NHL-Tag">#Calgary Flames</p>
+                    <div id='NFLAwayTeamTitle'>
+                        <h4 id='AwayTeamRed'>Away Team:</h4>
+                        <div>
+                            {/* //Away Team */}
+                            <p id = 'NFLAwayTeam'>
+                                {GameData.map(Team => (
+                                    <p id='ApiInfo' key={Team.id}>{Team.gameAway}</p>
+                                )
+                                )}
+                            </p>
                         </div>
                     </div>
                 </div>

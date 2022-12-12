@@ -13,7 +13,7 @@ function AccountCreation(){
     const handleSubmit = ()=>
     {
         const user = {Firstname:Firstname, Lastname:Lastname, Email:Email, Password:Password}
-        Axios.post('http://localhost:5000/newuser', user)
+        Axios.post('http://localhost:5000/newuser/'+ user)
         .then((response) => {
         console.log(response);
         console.log("User Information Sent")})

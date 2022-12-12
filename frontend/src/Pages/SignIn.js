@@ -4,18 +4,16 @@ import { Link } from "react-router-dom";
 import Axios from 'axios'
 
 
-function AccountSignIn(){
-    const[Email, setEmail] = useState("")
-    const[Password, setPassword] = useState("")
-    //const nav = useNavigate();
+function AccountSignIn() {
+    const[Email, setEmail] = useState("");
+    const[Password, setPassword] = useState("");
+    
 
     const handleSubmit = () =>
     {
         Axios.get('http://localhost:5000/signin/'+ Email)
         .then((response) => {
-            //nav('/NBA');
-            // setEmail(response.Email)
-            // setPassword(response.Password
+            console.log(response);
         }).catch((error) =>{
             console.warn('Error occured: '+error);
         })
@@ -31,7 +29,7 @@ function AccountSignIn(){
                     <br /> 
                     <br /> 
 
-                    <div> <Link to = "/AccountPage"><button onClick={handleSubmit}>Sign In</button></Link> <Link to ='/AccountCreation'> Create an Account</Link> </div>
+                    <div> <button onClick={handleSubmit}>Sign In</button> <Link to ='/AccountCreation'> Create an Account</Link> </div>
                     <br/>           
                 </form>
             </div>

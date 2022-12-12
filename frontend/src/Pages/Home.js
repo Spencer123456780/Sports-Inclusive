@@ -21,10 +21,10 @@ const home = () => {
                     </div>
                     <div id = "NHL-Tag-Box">
                         <p> <Link id = "HomeLeft-Tag" to={'/NBA'}>#NBA</Link></p>
-                        <p> <Link id = "HomeLeft-Tag" to={'/NHLPlayers'}>#NHL</Link></p>
-                        <p> <Link id = "HomeLeft-Tag" to={'/NFLPlayers'}>#NFL</Link></p>
+                        <p> <Link id = "HomeLeft-Tag" to={'/NHL'}>#NHL</Link></p>
+                        <p> <Link id = "HomeLeft-Tag" to={'/NFL'}>#NFL</Link></p>
                     </div>
-                    <h5> <Link id = "Home-Sports-Bottom-Text" to={'/NBA'}>See More NBA</Link> <Link id = "Home-Sports-Bottom-Text" to={'/NHLPlayers'}>See More NHL</Link> <Link id = "Home-Sports-Bottom-Text" to={'/NFLPlayers'}>See More NFL</Link></h5>
+                    <h5> <Link id = "Home-Sports-Bottom-Text" to={'/NBA'}>See More NBA</Link> <Link id = "Home-Sports-Bottom-Text" to={'/NHL'}>See More NHL</Link> <Link id = "Home-Sports-Bottom-Text" to={'/NFL'}>See More NFL</Link></h5>
                 </div>
 
                 <div id='HomePageRight'>
@@ -46,7 +46,7 @@ const home = () => {
                             </div>
                             <h5 id = "Artical-Title">NFL Teams and there Scheduals</h5>
                             <div id = "New-Tag-Box">
-                            <p> <Link id = "New-Tag" to={'/NFLPlayers'}>#NFL</Link></p>
+                            <p> <Link id = "New-Tag" to={'/NFL'}>#NFL</Link></p>
                             </div>
                         </div>
                     </div>
@@ -59,7 +59,7 @@ const home = () => {
                             </div>
                                 <h5 id = "Artical-Title">NHL Teams and there Scheduals</h5>
                             <div id = "New-Tag-Box">
-                                <p> <Link id = "New-Tag" to={'/NHLPlayers'}>#NHL</Link></p>
+                                <p> <Link id = "New-Tag" to={'/NHL'}>#NHL</Link></p>
                             </div>
                         </div>
 

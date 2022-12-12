@@ -80,10 +80,11 @@ app.get('/signin/:Email', (req, res) =>{
         var myObj = obj.user[i].Email;
         if(val === myObj){
           let reply = {
-            name: req.params.Email
+            name: req.params.Email,
+            password: obj.user[i].Password
           }
           matchingData.push(reply);
-          console.log(JSON.stringify(matchingData) + "is the matching data");
+          console.log(matchingData);
         }
       }
       res.send(matchingData);
@@ -92,6 +93,10 @@ app.get('/signin/:Email', (req, res) =>{
     res.send("No matching user");
   }
 });
+
+
+
+
 
 
 let dynamicNHL, dynamicNFL, dynamicNBA;
@@ -205,20 +210,6 @@ axios.request(options2).then(function (response){
   res.send(data2);
 })
 })
-// //NFL Schedule api call
-// const options3 = {
-//   method: 'GET',
-//   url: 'https://datacrunch.9c9media.ca/statsapi/sports/football/leagues/nfl/schedule/competitors/317?brand=tsn&type=json',
-//   headers: { 'content-encoding': 'gzip', 'content-type': 'application/json' }
-// };
-// axios.request(options3).then(function (response) {
-//   scheduleNFL = response.data.events
-//     let randomName3 = nextNFLGame();
-//     console.log(randomName3)
-//     console.log(teamsNFL)
-// }).catch(function (error) {
-//     console.error(error);
-// });
 
 //NFL Teams Function
 function teamNFLStats() {
@@ -267,20 +258,21 @@ axios.request(options4).then(function (response) {
 });
 
 
+
 //NBA Schedule api call
-const options5 = {
-  method: 'GET',
-  url: 'https://datacrunch.9c9media.ca/statsapi/sports/basketball/leagues/nba/schedule/competitors/270?brand=tsn&type=json',
-  headers: { 'content-encoding': 'gzip', 'content-type': 'application/json' }
-};
-axios.request(options5).then(function (response) {
-  scheduleNBA = response.data.events
-    let randomName4 = nextNBAGame();
-    console.log(randomName4)
-    console.log(teamsNBA)
-}).catch(function (error) {
-    console.error(error);
+app.post('/selectedNBATeam', (req, res) => {
+    dynamicNBA = req.body.teamId;
+    console.log(req.body.teamId);
+    const options5 = {
+    method: 'GET',
+    url: `https://datacrunch.9c9media.ca/statsapi/sports/basketball/leagues/nba/schedule/competitors/${dynamicNBA}?brand=tsn&type=json`,
+    };
+    axios.request(options5).then(function (response){
+    const data3 = nextNBAGame(response.data.events);
+    res.send(data3);
+  })
 });
+
 
 //NBA Teams Function
 function teamNBAStats() {
@@ -296,27 +288,23 @@ function teamNBAStats() {
   })
 };
 
+
+
 //NBA Schedule function
-function nextNBAGame() {
+function nextNBAGame(scheduleNBA) {
   let hasHappened =  scheduleNBA.filter(game => game.status === 'Pre-Game').slice(0,3)
   return hasHappened.map(hnba => {
     return{
       gameDate: hnba.date,
+      gameTime: hnba.gameStatus,
+      gameVenue: hnba.venue,
       gameHome: teamsNBA.find(tnba => tnba.id === hnba.homeCompetitorId).teamName,
       gameAway: teamsNBA.find(tnba => tnba.id === hnba.awayCompetitorId).teamName
     }
   })
 };
-app.post('/selectedNBATeam', (req, res) => {
-  dynamicNBA = req.body.teamId;
-  console.log(req.body.teamId);
-  const options2 = {
-  method: 'GET',
-  url: `https://datacrunch.9c9media.ca/statsapi/sports/basketball/leagues/nba/schedule/competitors/${dynamicNFL}?brand=tsn&type=json`,
-};
-axios.request(options2).then(function (response){
-  const data2 = nextNBAGame(response.data.events);
-  res.send(data2);
-})
-})
+
+
+
+
 

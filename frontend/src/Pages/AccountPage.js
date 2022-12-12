@@ -6,13 +6,17 @@ import { fa2, fa9, faUser, faUserLarge } from '@fortawesome/free-solid-svg-icons
 const profileIcon = <FontAwesomeIcon icon={faUser} size= '10x'/>
 
 
+const fetchUserData = async ()=> {
+    const response = await fetch('http://localhost:5000/newuser');
+    const newData = await response.json();
+}
+
 const AccountPage = () => {
 
     return(
         <>
             <h1 id="AccountTitle">Account Profile</h1>
             <div id="AccountPageSpacing">
-            
                 <div id="AccountImage">
                 <h3 id="ImageName">{profileIcon}</h3>
                 </div>
@@ -22,6 +26,11 @@ const AccountPage = () => {
                     <div id="AccountPageForms">
                         <form>
                             <div><p id="AccFN"> First Name: </p>  </div>
+                            {/* {UserData.map(Userdata => { 
+                                    return(
+                                        {UserData.cat}
+                                    )
+                                })};*/}
                             <div><p id="AccLN"> Last Name: </p>   </div>
                             <div><p id="Emailz"> Email: </p>   </div>
                             <div><p id="PassAndWords"> Password: </p> </div>
